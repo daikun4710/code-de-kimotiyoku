@@ -20,7 +20,7 @@ for (let i = 0; i < 25; i++) {
     contentRow.setAttribute('class', 'contentRow');
     contentRow.style.display = 'flex';
     content.appendChild(contentRow);
-    for (let j = 0; j < 7; j++) {
+    for (let j = 7; j > 0; j--) {
 
         const contentCol = document.createElement('div');
         contentCol.innerHTML = dayStr;

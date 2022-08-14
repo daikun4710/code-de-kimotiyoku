@@ -6,14 +6,12 @@ const content = document.getElementById('content');
 
 const dayArr = ['日', '月', '火', '水', '木', '金', '土'];
 
-//現在の曜日を取得
-let d = new Date();
-let day = d.getDate();
-let dayofweek = d.getDay();
-let changeDay = d.toLocaleDateString();
-let dayStr = d.toLocaleDateString();
-
-
+//現在の
+const weekGet = () => {
+    let d = new Date();
+    let day = d.getDate();
+    let dayofweek = d.getDay();
+};
 //レイアウトの作成(col)
 for (let i = 0; i < 25; i++) {
     const contentRow = document.createElement('div');
@@ -21,11 +19,8 @@ for (let i = 0; i < 25; i++) {
     contentRow.style.display = 'flex';
     content.appendChild(contentRow);
     for (let j = 0; j < 7; j++) {
-
         const contentCol = document.createElement('div');
-        contentCol.innerHTML = dayStr;
-        day = d.setDate(d.getDate() - 1);
-        dayStr = d.toLocaleDateString();
+        contentCol.innerHTML = weekGet();
         contentCol.setAttribute('class', 'contentCol');
         contentCol.style.width = '200px';
         contentCol.style.height = '200px';

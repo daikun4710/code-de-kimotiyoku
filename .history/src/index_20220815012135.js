@@ -11,7 +11,7 @@ let d = new Date();
 let day = d.getDate();
 let dayofweek = d.getDay();
 let changeDay = d.toLocaleDateString();
-let dayStr = d.toLocaleDateString();
+let dayStr = "";
 
 
 //レイアウトの作成(col)
@@ -23,7 +23,7 @@ for (let i = 0; i < 25; i++) {
     for (let j = 0; j < 7; j++) {
 
         const contentCol = document.createElement('div');
-        contentCol.innerHTML = dayStr;
+        contentCol.innerHTML = day;
         day = d.setDate(d.getDate() - 1);
         dayStr = d.toLocaleDateString();
         contentCol.setAttribute('class', 'contentCol');
