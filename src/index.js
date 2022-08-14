@@ -30,8 +30,15 @@ for (let i = 0; i < 25; i++) {
     }
 }
 
-for (let k = 0; k < 25; k++) {
-    for (let l = 6; l > 0; l--) {
+for(let m = dayofweek; m >= 0; m--){
+    let contentDay = document.getElementById(m);
+    contentDay.innerHTML = dayStr;
+    day = d.setDate(d.getDate() - 1);
+    dayStr = d.toLocaleDateString();
+}
+
+for (let k = 1; k < 25; k++) {
+    for (let l = 6; l >= 0; l--) {
         let contentDay = document.getElementById(k * 10 + l);
         contentDay.innerHTML = dayStr;
         day = d.setDate(d.getDate() - 1);
