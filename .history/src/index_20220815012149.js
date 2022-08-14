@@ -11,7 +11,7 @@ let d = new Date();
 let day = d.getDate();
 let dayofweek = d.getDay();
 let changeDay = d.toLocaleDateString();
-let dayStr = d.toLocaleDateString();
+let dayStr = "";
 
 
 //レイアウトの作成(col)

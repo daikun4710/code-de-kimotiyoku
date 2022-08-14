@@ -10,8 +10,6 @@ const dayArr = ['日', '月', '火', '水', '木', '金', '土'];
 let d = new Date();
 let day = d.getDate();
 let dayofweek = d.getDay();
-let changeDay = d.toLocaleDateString();
-let dayStr = d.toLocaleDateString();
 
 
 //レイアウトの作成(col)
@@ -23,9 +21,10 @@ for (let i = 0; i < 25; i++) {
     for (let j = 0; j < 7; j++) {
 
         const contentCol = document.createElement('div');
-        contentCol.innerHTML = dayStr;
-        day = d.setDate(d.getDate() - 1);
-        dayStr = d.toLocaleDateString();
+        contentCol.innerHTML = day;
+        // day = setDate(d.getDate() - 1);
+        dt.setDate(dt.getDate() - 10)
+        console.log(dt.toLocaleDateString());
         contentCol.setAttribute('class', 'contentCol');
         contentCol.style.width = '200px';
         contentCol.style.height = '200px';
