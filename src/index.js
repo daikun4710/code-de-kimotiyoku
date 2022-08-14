@@ -8,6 +8,7 @@ for (let i = 0; i < 25; i++) {
     content.appendChild(contentRow);
     for (let j = 0; j < 7; j++) {
         const contentCol = document.createElement('div');
+        contentCol.innerHTML = i;
         contentRow.appendChild(contentCol);
     }
 }
