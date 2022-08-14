@@ -21,11 +21,8 @@ for (let i = 0; i < 25; i++) {
     contentRow.style.display = 'flex';
     content.appendChild(contentRow);
     for (let j = 0; j < 7; j++) {
-
         const contentCol = document.createElement('div');
-        contentCol.innerHTML = dayStr;
-        day = d.setDate(d.getDate() - 1);
-        dayStr = d.toLocaleDateString();
+        contentCol.id = i * 10 + j;
         contentCol.setAttribute('class', 'contentCol');
         contentCol.style.width = '200px';
         contentCol.style.height = '200px';
@@ -33,7 +30,15 @@ for (let i = 0; i < 25; i++) {
     }
 }
 
-
+for (let k = 0; k < 25; k++) {
+    for (let l = 6; l > 0; l--) {
+        let contentDay = document.getElementById(k * 10 + l);
+        contentDay.innerHTML = dayStr;
+        day = d.setDate(d.getDate() - 1);
+        dayStr = d.toLocaleDateString();
+        
+    }
+}
 
 
 //表示するdivのタグ数の取得
