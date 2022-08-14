@@ -1,7 +1,11 @@
 {
   "name": "vscode-omikuji",
   "displayName": "vscode-omikuji",
+<<<<<<< HEAD
   "description": "Omikuji in VSCode. ",
+=======
+  "description": "Omikuji in VSCode.",
+>>>>>>> origin/main
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.70.0"
