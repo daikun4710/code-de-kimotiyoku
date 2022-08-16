@@ -1,3 +1,5 @@
+
+console.log(total_keypress_count);
 const body = document.getElementById('body');
 
 const content = document.getElementById('content');
@@ -5,13 +7,6 @@ const content = document.getElementById('content');
 //曜日によって変更する位置が変更される
 
 const dayArr = ['日', '月', '火', '水', '木', '金', '土'];
-
-//現在の曜日を取得
-let d = new Date();
-let day = d.getDate();
-let dayofweek = d.getDay();
-let changeDay = d.toLocaleDateString();
-let dayStr = d.toLocaleDateString();
 
 
 //レイアウトの作成(col)
@@ -30,6 +25,7 @@ for (let i = 0; i < 25; i++) {
     }
 }
 
+//現在の日にちから現在の週の日曜日までの日付を出力
 for(let m = dayofweek; m >= 0; m--){
     let contentDay = document.getElementById(m);
     contentDay.innerHTML = dayStr;
@@ -37,6 +33,7 @@ for(let m = dayofweek; m >= 0; m--){
     dayStr = d.toLocaleDateString();
 }
 
+//残りの日付を出力
 for (let k = 1; k < 25; k++) {
     for (let l = 6; l >= 0; l--) {
         let contentDay = document.getElementById(k * 10 + l);
@@ -53,3 +50,17 @@ for (let k = 1; k < 25; k++) {
 
 
 //曜日によって表示するdivの取得
+
+
+
+ //前回の日付を取得したい
+ let beforeDay = storage.getValue("beforeDay", 0);
+
+if(beforeDay == null){
+   storage.setValue("beforeDay", dayStr);
+   //現在の日付と前回の日付が違うか
+}else if(beforeDay != dayStr){
+    //テキストファイルが変更された回数を初期化
+    total_keypress_count = storage.setValue("total_keypress_count", 0);
+}
+
