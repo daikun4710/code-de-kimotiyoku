@@ -26,6 +26,18 @@ function activate(context) {
  let changeDay = d.toLocaleDateString();
  let dayStr = d.toLocaleDateString();
 
+ //-----------------------------------------------------------------------
+
+
+if(beforeDay == null){
+   storage.setValue("beforeDay", dayStr);
+   //現在の日付と前回の日付が違うか
+}else if(beforeDay != dayStr){
+    //テキストファイルが変更された回数を初期化
+    total_keypress_count = storage.setValue("total_keypress_count", 0);
+}
+
+
 
 
     //要るか分からん
