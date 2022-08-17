@@ -12,7 +12,18 @@
 
 <body class="container-fluid" id="body">
     <h1 class="text-center">vscode拡張機能</h1>
-    <div id="content" style="margin-left: 20%; margin-right: 20%; font-size: 1px;" class=" style=" width: 200px;></div>
+
+    <div style="text-align: right;">
+        <select id="color" onchange="getValue(this)">
+            <option value="0" class="text-success" selected>■緑</option>
+            <option value="1" class="text-danger">■赤</option>
+            <option value="2" class="text-primary">■青</option>
+        </select>
+    </div>
+    
+    
+
+    <div id="content" style="margin-left: 20%; margin-right: 20%; margin-top: 2%; font-size: 1px;" class="text-white style=" width: 200px;></div>
 
     <script src="index.js "></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
