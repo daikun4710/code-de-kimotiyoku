@@ -3,6 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
 
+// const fs = require("fs");
+
+// // 書き込むデータ準備
+// const data = "Hello Node";
+
+// // 書き込み
+// fs.writeFile("file2.txt", data, (err) => {
+//   if (err) throw err;
+//   console.log('正常に書き込みが完了しました');
+// });
+
 class LocalStorage {
     constructor(storage) {
         this.storage = storage;
@@ -16,6 +27,7 @@ class LocalStorage {
 }
 
 //beforeDay(前回の更新日)どうしよ
+
 
 function activate(context) {
 
@@ -53,7 +65,7 @@ function activate(context) {
      
      //beforeDay = storage.getValue("beforeDay", 0);
 
-    let totalCouont = 0;
+    let totalCount = 0;
     
 
     //VSCodeの右下にボタンを表示
@@ -61,13 +73,13 @@ function activate(context) {
     // //↓ちょっとこれ分からんかった
     label.show();
     context.subscriptions.push(label);
-    beforeDay = storage.getValue("beforeDay", 0);
+    beforeDay = storage.getValue("beforeDay",0);
 
     
     const updateLabel = () => {
         // format total_keypress_count as  1,234,567
         //let formatted_count = total_keypress_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        label.text = "$(flame)" + totalCouont + " " + beforeDay;
+        label.text = "$(flame)" + totalCount + " " + beforeDay;
     };
     
     updateLabel();
@@ -76,19 +88,19 @@ function activate(context) {
     //テキストファイルが変更された回数を更新
     const onKeyPressed = () => {
             //現在の曜日を取得
-        d = new Date();
+        d = new Date(2022,8,20);
         day = d.getDate();  //日
         dayofweek = d.getDay(); //曜日
         changeDay = d.toLocaleDateString();
         dayStr = d.toLocaleDateString();
 
         //前回の日付の更新、変数のリセット
-        if(storage.getValue("beforeDay", 0) !== dayStr){
+        if(storage.getValue("beforeDay",0) !== dayStr){
             storage.setValue("beforeDay", dayStr);
-            beforeDay = storage.getValue("beforeDay", 0);
+            beforeDay = storage.getValue("beforeDay",0);
         }
         //total_keypress_count = storage.getValue("total_keypress_count", 0);
-        totalCouont++;
+        totalCount++;
         //storage.setValue("total_keypress_count", total_keypress_count);
         updateLabel();
     };
