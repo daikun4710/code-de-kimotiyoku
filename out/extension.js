@@ -30,6 +30,8 @@ class LocalStorage {
 
 
 function activate(context) {
+    
+    
 
     
         //現在の曜日を取得
@@ -67,19 +69,28 @@ function activate(context) {
 
     let totalCount = 0;
     
+    context.subscriptions.push(
+        vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
+            vscode.window.showInformationMessage('Hello World from vscode-omikuji!');
+            vscode.env.openExternal(vscode.Uri.parse('file:///C:/Users/*/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html'));
+            //file:///C:/Users/iwasaki/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html
+        })
+    );
 
     //VSCodeの右下にボタンを表示
-    const label = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+    const button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
     // //↓ちょっとこれ分からんかった
-    label.show();
-    context.subscriptions.push(label);
+    button.command = 'vscode-omikuji.helloWorld';
+    button.text = "$(flame)" + totalCount + " " + beforeDay;
+    context.subscriptions.push(button);
+    button.show();
     beforeDay = storage.getValue("beforeDay",0);
 
     
     const updateLabel = () => {
         // format total_keypress_count as  1,234,567
         //let formatted_count = total_keypress_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        label.text = "$(flame)" + totalCount + " " + beforeDay;
+        button.text = "$(flame)" + totalCount + " " + beforeDay;
     };
     
     updateLabel();
@@ -88,7 +99,7 @@ function activate(context) {
     //テキストファイルが変更された回数を更新
     const onKeyPressed = () => {
             //現在の曜日を取得
-        d = new Date(2022,8,20);
+        d = new Date();
         day = d.getDate();  //日
         dayofweek = d.getDay(); //曜日
         changeDay = d.toLocaleDateString();

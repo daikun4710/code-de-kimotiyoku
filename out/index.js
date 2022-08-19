@@ -1,40 +1,45 @@
-let jsonsData;
-let fromJson;
-let dataArr = [];
-const promise = new Promise((resolve) => {
-        //jsonデータの取得
-    fetch("data.json")
-    .then(function (response) {
-        // console.log(response);
-        return response.json();
-    })
-    .then(function (json) {
-        jsonsData = JSON.stringify(json);
-        fromJson = JSON.parse(jsonsData);
+// let jsonsData;
+// let fromJson;
+// let dataArr = [];
+// const promise = new Promise((resolve) => {
+//         //jsonデータの取得
+//     fetch("data.json")
+//     .then(function (response) {
+//         // console.log(response);
+//         return response.json();
+//     })
+//     .then(function (json) {
+//         jsonsData = JSON.stringify(json);
+//         fromJson = JSON.parse(jsonsData);
         
-        for(let i = 0; i < fromJson.totalCount.length; i++){
-            dataArr.unshift(fromJson.totalCount[i].count);
-            console.log(fromJson.totalCount[i].count);
-        }
-        let newData = fromJson;
-        let addData = {
-            "day":"2022/8/14",
-            "count":4000
-        }
-        newData.totalCount.push(addData);
-        fromJson = newData;
-        console.log(fromJson.totalCount[3].count);
+//         for(let i = 0; i < fromJson.totalCount.length; i++){
+//             dataArr.unshift(fromJson.totalCount[i].count);
+//             console.log(fromJson.totalCount[i].count);
+//         }
+//         let newData = fromJson;
+//         let addData = {
+//             "day":"2022/8/14",
+//             "count":4000
+//         }
+//         newData.totalCount.push(addData);
+//         fromJson = newData;
+//         console.log(fromJson.totalCount[3].count);
 
-        // fromJson.totalCount.day = "2022/8/19";
-        // fromJson.totalCount.count = 4000;
-        // console.log(fromJson.totalCount[3].count);
-        //ここの処理が終わったら次に行く
-        resolve("終わり");
-    });
-}).then((val) => {
-    console.log(localStorage.getItem("test"));
-    console.log(val);
+        // // fromJson.totalCount.day = "2022/8/19";
+        // // fromJson.totalCount.count = 4000;
+        // // console.log(fromJson.totalCount[3].count);
+        // // ここの処理が終わったら次に行く
+
+    //     resolve("終わり");
+    // });
+//}).then((val) => {
+    //console.log(localStorage.getItem("test"));
+    //console.log(val);
         const content = document.getElementById('content');
+
+        const windowOpen = () => {
+            window.open("https://developer.mozilla.org/ja/docs/Web/API/Window/open");
+        }
 
     //曜日によって変更する位置が変更される
 
@@ -86,9 +91,8 @@ const promise = new Promise((resolve) => {
     if(localStorage.getItem("beforeDay") == dayStr){
         localStorage.setItem("beforeDay",dayStr);
         localStorage.setItem("totalCount",0);
-        console.log(12345);
     }
-    console.log(localStorage.getItem("totalCount"));
+    //console.log(localStorage.getItem("totalCount"));
 
     let contentDay;
     //現在の日にちから現在の週の日曜日までの日付を出力
@@ -201,9 +205,9 @@ const promise = new Promise((resolve) => {
 
 
 
-    for(let i = 0; i < dataArr.length; i++){
-        console.log(dataArr[i]);
-    }
+    // for(let i = 0; i < dataArr.length; i++){
+    //     console.log(dataArr[i]);
+    // }
 
 
     // fetch("data.json")
@@ -243,7 +247,8 @@ const promise = new Promise((resolve) => {
     // }
     // const storage = new LocalStorage(localStorage);
     // console.log(storage.getValue("beforeDay",0));
-});
+
+// });
 
 
 // [
