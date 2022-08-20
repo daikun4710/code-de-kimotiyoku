@@ -37,10 +37,7 @@
     //console.log(val);
         const content = document.getElementById('content');
 
-        const windowOpen = () => {
-            window.open("https://developer.mozilla.org/ja/docs/Web/API/Window/open");
-        }
-
+        
     //曜日によって変更する位置が変更される
 
     const dayArr = ['日', '月', '火', '水', '木', '金', '土'];

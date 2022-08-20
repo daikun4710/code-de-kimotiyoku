@@ -1,4 +1,4 @@
-"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
@@ -13,6 +13,9 @@ const vscode = require("vscode");
 //   if (err) throw err;
 //   console.log('正常に書き込みが完了しました');
 // });
+
+
+
 
 class LocalStorage {
     constructor(storage) {
@@ -30,8 +33,6 @@ class LocalStorage {
 
 
 function activate(context) {
-    
-    
 
     
         //現在の曜日を取得
@@ -56,7 +57,6 @@ function activate(context) {
 
     //要るか分からん
     const storage = new LocalStorage(context.globalState);
-
     let beforeDay;
 
     // if(storage.getValue("beforeDay",0) == null){
@@ -71,8 +71,8 @@ function activate(context) {
     
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
-            vscode.window.showInformationMessage('Hello World from vscode-omikuji!');
-            vscode.env.openExternal(vscode.Uri.parse('file:///C:/Users/*/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html'));
+            vscode.window.showInformationMessage('ハア？');
+            vscode.env.openExternal(vscode.Uri.parse('file:///C:/Users/iwasaki/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html',true));
             //file:///C:/Users/iwasaki/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html
         })
     );
@@ -114,6 +114,16 @@ function activate(context) {
         totalCount++;
         //storage.setValue("total_keypress_count", total_keypress_count);
         updateLabel();
+
+        // let obj = { tanuki:'pon-poko', kitsune:'kon-kon', neko:'nyan-nyan' };
+        // const result = {};
+
+        // // こうすればOK
+        // Object.keys(obj).forEach(function (key){
+        //   result[key] = obj[key];
+        // });
+        // fs.writeFileSync('data.json', JSON.stringify(result));
+        vscode.window.showInformationMessage('プルルルルルル');
     };
 
     //テキストファイルが変更された時に作動
