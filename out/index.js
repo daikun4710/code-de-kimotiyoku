@@ -64,7 +64,7 @@
             ['#8F1209', '#EF1E0F', '#F34A3E', '#F9A49E'],//赤
             ['#0E0157', '#1E02BC', '#4727FD', '#9D8CFE'] //青
         ];
-        let coffeeArr = ['coffee1.svg','coffee2.svg','coffee3.svg','coffee4.svg']
+        let coffeeArr = ['coffee4.svg','coffee3.svg','coffee2.svg','coffee1.svg']
 
     //レイアウトの作成(col)
     for (let i = 0; i < row; i++) {
@@ -81,6 +81,8 @@
             contentCol.style.marginRight = '5px';
             contentCol.style.marginBottom = '5px';
             contentRow.appendChild(contentCol);
+
+            
         }
     }
 
@@ -133,21 +135,6 @@
     //初回起動時の色の振り分け
     for(let n = dayofweek; n >= 0; n--){
         kariokiba = document.getElementById(n);
-        
-        
-        // //coffee画像の処理
-        // if(n===3){
-        //    if(totalCountArr[i] >= 4000){
-        //     kariokiba.src = `../images/${coffeeArr[selectColorNum][0]}`;
-        // }else if(totalCountArr[i] >= 3000){
-        //     kariokiba.src = `../images/${coffeeArr[selectColorNum][1]}`;
-        // }else if(totalCountArr[i] >= 2000){
-        //     kariokiba.src = `../images/${coffeeArr[selectColorNum][2]}`;
-        // }else if(totalCountArr[i] >= 1000){
-        //     kariokiba.src = `../images/${coffeeArr[selectColorNum][3]}`;
-        // }
-        // }
-        
         if(totalCountArr[i] >= 4000){
             kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
         }else if(totalCountArr[i] >= 3000){
@@ -187,6 +174,23 @@
         i = 0;
         for(let n = dayofweek; n >= 0; n--){
             kariokiba = document.getElementById(n);
+
+         // coffee画像の処理
+        if(selectColorNum == 3){
+            let coffeeImg = document.createElement('img');
+           if(totalCountArr[i] >= 4000){
+                coffeeImg.src = `../images/${coffeeArr[0]}`;
+            }else if(totalCountArr[i] >= 3000){
+                coffeeImg.src = `../images/${coffeeArr[1]}`;
+            }else if(totalCountArr[i] >= 2000){
+                coffeeImg.src = `../images/${coffeeArr[2]}`;
+            }else if(totalCountArr[i] >= 1000){
+                coffeeImg.src = `../images/${coffeeArr[3]}`;
+            }
+        kariokiba.style.backgroundColor = '#ffffff';
+        kariokiba.appendChild(coffeeImg);
+        }
+        else{
             if(totalCountArr[i] >= 4000){
                 kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
             }else if(totalCountArr[i] >= 3000){
@@ -198,27 +202,48 @@
             }else {
                 kariokiba.style.backgroundColor = '#dcdcdc';
             }
+            coffeeImg.src= "../imagaes/spare.svg";
+        }
             i++;
         }
         for (let k = 1; k < row; k++) {
             for (let l = col - 1; l >= 0; l--) {
                 kariokiba = document.getElementById(k * 10 + l);
-                if(totalCountArr[i] >= 4000){
-                    kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
-                }else if(totalCountArr[i] >= 3000){
-                    kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
-                }else if(totalCountArr[i] >= 2000){
-                    kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
-                }else if(totalCountArr[i] >= 1000){
-                    kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
-                }else {
-                    kariokiba.style.backgroundColor = '#dcdcdc';
-                }
-                i++;
+
+                
+                // coffee画像の処理
+        if(selectColorNum == 3){
+            let coffeeImg = document.createElement('img');
+           if(totalCountArr[i] >= 4000){
+                coffeeImg.src = `../images/${coffeeArr[0]}`;
+            }else if(totalCountArr[i] >= 3000){
+                coffeeImg.src = `../images/${coffeeArr[1]}`;
+            }else if(totalCountArr[i] >= 2000){
+                coffeeImg.src = `../images/${coffeeArr[2]}`;
+            }else if(totalCountArr[i] >= 1000){
+                coffeeImg.src = `../images/${coffeeArr[3]}`;
+            }
+        kariokiba.style.backgroundColor = '#ffffff';
+        kariokiba.appendChild(coffeeImg);
+        }
+        else{
+            if(totalCountArr[i] >= 4000){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
+            }else if(totalCountArr[i] >= 3000){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
+            }else if(totalCountArr[i] >= 2000){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
+            }else if(totalCountArr[i] >= 1000){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
+            }else {
+                kariokiba.style.backgroundColor = '#dcdcdc';
+            }
+        coffeeImg.src= "../imagaes/spare.svg";
+        }
+            i++;
             }
         }
     }
-
 
 
     // for(let i = 0; i < dataArr.length; i++){
