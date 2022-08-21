@@ -35,12 +35,11 @@
 //}).then((val) => {
     //console.log(localStorage.getItem("test"));
     //console.log(val);
-        const content = document.getElementById('content');
 
         
+        const content = document.getElementById('content');
     //曜日によって変更する位置が変更される
-
-    const dayArr = ['日', '月', '火', '水', '木', '金', '土'];
+        const dayArr = ['日', '月', '火', '水', '木', '金', '土'];
 
         //現在の曜日を取得
         let d = new Date();
@@ -52,10 +51,8 @@
         //変数宣言
         let contentRow;
         let contentCol;
-        let row = 6;
-        let col = 7;
-        let coffeeImgRow;
-        let coffeeImgCol;
+        let row = 6;  //縦のdiv要素の数
+        let col = 7;  //横のdiv要素の数
 
         //左が濃い
         let colorArr = [
@@ -83,11 +80,12 @@
         }
     }
 
-    let beforeDay;
-    let beforeDayPlace;
-    let totalCount;
-    beforeDayPlace = 6 - dayofweek;
-    if(localStorage.getItem("beforeDay") == dayStr){
+    // let beforeDay = 6 - dayofweek;
+    // let totalCount;
+
+    //前回開いた日付と現在の日付が同じか確認
+    if(localStorage.getItem("beforeDay") != dayStr){
+        //違ければ前回の日付を上書き、totalCountを初期化
         localStorage.setItem("beforeDay",dayStr);
         localStorage.setItem("totalCount",0);
     }
@@ -97,7 +95,7 @@
     for(let m = dayofweek; m >= 0; m--){
         contentDay = document.getElementById(m);
         contentDay.innerHTML = dayStr;
-        contentDay.style.background = 'red';
+        contentDay.style.background = '#022D10';
         day = d.setDate(d.getDate() - 1);
         dayStr = d.toLocaleDateString().substring(5);
     }
