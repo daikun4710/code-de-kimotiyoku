@@ -25,12 +25,11 @@
 	"main": "./out/extension.js",
 	"contributes": {},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+
 	},
 	"devDependencies": {
 		"@types/vscode": "^1.64.0",
@@ -54,6 +53,8 @@
 		"updated": false,
 		"isPreReleaseVersion": false,
 		"preRelease": false,
-		"installedTimestamp": 1661098842250
+
+		"installedTimestamp": 1660658910837
+
 	}
 }
