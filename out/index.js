@@ -36,6 +36,7 @@
     //console.log(localStorage.getItem("test"));
     //console.log(val);
 
+    
         
         const content = document.getElementById('content');
     //曜日によって変更する位置が変更される
@@ -76,6 +77,7 @@
             contentCol.style.height = '75px';
             contentCol.style.marginRight = '5px';
             contentCol.style.marginBottom = '5px';
+            // contentCol.onmouseover = 'move(event)';
             contentRow.appendChild(contentCol);
         }
     }
@@ -245,6 +247,10 @@
         }
     }
 
+
+    // function move(event){
+    //     this.style.backgroundColor = '#ffffff';
+    // }
 
     // for(let i = 0; i < dataArr.length; i++){
     //     console.log(dataArr[i]);
