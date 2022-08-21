@@ -123,7 +123,7 @@ function activate(context) {
         //   result[key] = obj[key];
         // });
         // fs.writeFileSync('data.json', JSON.stringify(result));
-        vscode.window.showInformationMessage('プルルルルルル');
+        //vscode.window.showInformationMessage('プルルルルルル');
     };
 
     //テキストファイルが変更された時に作動
