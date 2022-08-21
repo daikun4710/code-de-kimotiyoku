@@ -37,10 +37,7 @@
     //console.log(val);
         const content = document.getElementById('content');
 
-        const windowOpen = () => {
-            window.open("https://developer.mozilla.org/ja/docs/Web/API/Window/open");
-        }
-
+        
     //曜日によって変更する位置が変更される
 
     const dayArr = ['日', '月', '火', '水', '木', '金', '土'];
@@ -57,14 +54,16 @@
         let contentCol;
         let row = 6;
         let col = 7;
+        let coffeeImgRow;
+        let coffeeImgCol;
 
         //左が濃い
         let colorArr = [
             ['#022D10', '#088D34', '#3AF478', '#CBFCDB'],//緑
             ['#8F1209', '#EF1E0F', '#F34A3E', '#F9A49E'],//赤
-            ['#0E0157', '#1E02BC', '#4727FD', '#9D8CFE'] //青
+            ['#0E0157', '#1E02BC', '#4727FD', '#9D8CFE'],//青
+            ['coffee4.svg','coffee3.svg','coffee2.svg','coffee1.svg']//コーヒー
         ];
-        let coffeeArr = ['coffee4.svg','coffee3.svg','coffee2.svg','coffee1.svg']
 
     //レイアウトの作成(col)
     for (let i = 0; i < row; i++) {
@@ -81,8 +80,6 @@
             contentCol.style.marginRight = '5px';
             contentCol.style.marginBottom = '5px';
             contentRow.appendChild(contentCol);
-
-            
         }
     }
 
@@ -90,19 +87,17 @@
     let beforeDayPlace;
     let totalCount;
     beforeDayPlace = 6 - dayofweek;
-    //localStorage.setItem(beforeDay,dayStr);
     if(localStorage.getItem("beforeDay") == dayStr){
         localStorage.setItem("beforeDay",dayStr);
         localStorage.setItem("totalCount",0);
     }
-    //console.log(localStorage.getItem("totalCount"));
 
     let contentDay;
     //現在の日にちから現在の週の日曜日までの日付を出力
     for(let m = dayofweek; m >= 0; m--){
         contentDay = document.getElementById(m);
         contentDay.innerHTML = dayStr;
-        contentDay.style.backgroundColor = '#022D10';
+        contentDay.style.background = 'red';
         day = d.setDate(d.getDate() - 1);
         dayStr = d.toLocaleDateString().substring(5);
     }
@@ -130,6 +125,7 @@
     let selectColorNum = 0;
     //【仮】対象のdiv要素を示す変数
     let kariokiba;
+    let kariCoffee;
     let i = 0;
 
     //初回起動時の色の振り分け
@@ -170,39 +166,38 @@
         colorClick(this.value);
     }
 
+    //二回目から------------------------------------------------------------------
     function colorClick(selectColorNum){
         i = 0;
         for(let n = dayofweek; n >= 0; n--){
             kariokiba = document.getElementById(n);
-
-         // coffee画像の処理
         if(selectColorNum == 3){
-            let coffeeImg = document.createElement('img');
-           if(totalCountArr[i] >= 4000){
-                coffeeImg.src = `../images/${coffeeArr[0]}`;
-            }else if(totalCountArr[i] >= 3000){
-                coffeeImg.src = `../images/${coffeeArr[1]}`;
-            }else if(totalCountArr[i] >= 2000){
-                coffeeImg.src = `../images/${coffeeArr[2]}`;
-            }else if(totalCountArr[i] >= 1000){
-                coffeeImg.src = `../images/${coffeeArr[3]}`;
-            }
-        kariokiba.style.backgroundColor = '#ffffff';
-        kariokiba.appendChild(coffeeImg);
-        }
+            if(totalCountArr[i] >= 4000){
+                 kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
+             }else if(totalCountArr[i] >= 3000){
+                 kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
+             }else if(totalCountArr[i] >= 2000){
+                 kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
+             }else if(totalCountArr[i] >= 1000){
+                 kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
+             }
+             kariokiba.style.backgroundRepeat = 'no-repeat';
+             kariokiba.style.backgroundPosition = 'center';
+             kariokiba.style.backgroundColor = 'transparent';
+         
+         }
         else{
             if(totalCountArr[i] >= 4000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
+                kariokiba.style.background = colorArr[selectColorNum][0];
             }else if(totalCountArr[i] >= 3000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
+                kariokiba.style.background = colorArr[selectColorNum][1];
             }else if(totalCountArr[i] >= 2000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
+                kariokiba.style.background = colorArr[selectColorNum][2];
             }else if(totalCountArr[i] >= 1000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
+                kariokiba.style.background = colorArr[selectColorNum][3];
             }else {
-                kariokiba.style.backgroundColor = '#dcdcdc';
+                kariokiba.style.background = '#dcdcdc';
             }
-            coffeeImg.src= "../imagaes/spare.svg";
         }
             i++;
         }
@@ -213,32 +208,33 @@
                 
                 // coffee画像の処理
         if(selectColorNum == 3){
-            let coffeeImg = document.createElement('img');
+            
            if(totalCountArr[i] >= 4000){
-                coffeeImg.src = `../images/${coffeeArr[0]}`;
+                kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
             }else if(totalCountArr[i] >= 3000){
-                coffeeImg.src = `../images/${coffeeArr[1]}`;
+                kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
             }else if(totalCountArr[i] >= 2000){
-                coffeeImg.src = `../images/${coffeeArr[2]}`;
+                kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
             }else if(totalCountArr[i] >= 1000){
-                coffeeImg.src = `../images/${coffeeArr[3]}`;
+                kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
             }
-        kariokiba.style.backgroundColor = '#ffffff';
-        kariokiba.appendChild(coffeeImg);
+            kariokiba.style.backgroundRepeat = 'no-repeat';
+            kariokiba.style.backgroundPosition = 'center';
+            kariokiba.style.backgroundColor = 'transparent';
+        
         }
         else{
             if(totalCountArr[i] >= 4000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
+                kariokiba.style.background = colorArr[selectColorNum][0];
             }else if(totalCountArr[i] >= 3000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
+                kariokiba.style.background = colorArr[selectColorNum][1];
             }else if(totalCountArr[i] >= 2000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
+                kariokiba.style.background = colorArr[selectColorNum][2];
             }else if(totalCountArr[i] >= 1000){
-                kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
+                kariokiba.style.background = colorArr[selectColorNum][3];
             }else {
-                kariokiba.style.backgroundColor = '#dcdcdc';
+                kariokiba.style.background = '#dcdcdc';
             }
-        coffeeImg.src= "../imagaes/spare.svg";
         }
             i++;
             }
