@@ -179,6 +179,9 @@
              }else if(totalCountArr[i] >= 1000){
                  kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
              }
+             else{
+                kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
+             }
              kariokiba.style.backgroundRepeat = 'no-repeat';
              kariokiba.style.backgroundPosition = 'center';
              kariokiba.style.backgroundColor = 'transparent';
@@ -216,6 +219,9 @@
             }else if(totalCountArr[i] >= 1000){
                 kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
             }
+            else{
+                  kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
+             }
             kariokiba.style.backgroundRepeat = 'no-repeat';
             kariokiba.style.backgroundPosition = 'center';
             kariokiba.style.backgroundColor = 'transparent';
