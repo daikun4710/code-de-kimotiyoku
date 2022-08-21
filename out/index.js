@@ -63,6 +63,7 @@
             ['#8F1209', '#EF1E0F', '#F34A3E', '#F9A49E'],//赤
             ['#0E0157', '#1E02BC', '#4727FD', '#9D8CFE'],//青
             ['coffee4.svg','coffee3.svg','coffee2.svg','coffee1.svg']//コーヒー
+            ['skirt4.svg','skirt3.svg','skirt2.svg','skirt1.svg']//スカート
         ];
 
     //レイアウトの作成(col)
@@ -110,7 +111,6 @@
             contentDay.style.backgroundColor = '#dcdcdc';
             day = d.setDate(d.getDate() - 1);
             dayStr = d.toLocaleDateString().substring(5);
-            
         }
     }
 
@@ -173,22 +173,41 @@
             kariokiba = document.getElementById(n);
         if(selectColorNum == 3){
             if(totalCountArr[i] >= 4000){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
+                 kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
              }else if(totalCountArr[i] >= 3000){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
+                 kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
              }else if(totalCountArr[i] >= 2000){
                  kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
              }else if(totalCountArr[i] >= 1000){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
+                 kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
              }
              else{
-                kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
+                kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
              }
+             kariokiba.style.color = 'black';
              kariokiba.style.backgroundRepeat = 'no-repeat';
              kariokiba.style.backgroundPosition = 'center';
              kariokiba.style.backgroundColor = 'transparent';
-         
          }
+         else if(selectColorNum == 4){
+            if(totalCountArr[i] >= 4000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt4.svg)';
+             }else if(totalCountArr[i] >= 3000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt3.svg)';
+             }else if(totalCountArr[i] >= 2000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt2.svg)';
+             }else if(totalCountArr[i] >= 1000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt1.svg)';
+             }
+             else{
+                kariokiba.style.backgroundImage = 'url(../images/skirt5.svg)';
+             }
+             kariokiba.style.color = 'black';
+             kariokiba.style.backgroundRepeat = 'no-repeat';
+             kariokiba.style.backgroundPosition = 'center';
+             kariokiba.style.backgroundColor = 'transparent';
+         }
+
         else{
             if(totalCountArr[i] >= 4000){
                 kariokiba.style.background = colorArr[selectColorNum][0];
@@ -201,6 +220,7 @@
             }else {
                 kariokiba.style.background = '#dcdcdc';
             }
+            kariokiba.style.color = 'white';
         }
             i++;
         }
@@ -224,11 +244,30 @@
             else{
                   kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
              }
+             kariokiba.style.color = 'black';
             kariokiba.style.backgroundRepeat = 'no-repeat';
             kariokiba.style.backgroundPosition = 'center';
             kariokiba.style.backgroundColor = 'transparent';
         
         }
+         else if(selectColorNum == 4){
+            if(totalCountArr[i] >= 4000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt5.svg)';
+             }else if(totalCountArr[i] >= 3000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt1.svg)';
+             }else if(totalCountArr[i] >= 2000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt2.svg)';
+             }else if(totalCountArr[i] >= 1000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt3.svg)';
+             }
+             else{
+                kariokiba.style.backgroundImage = 'url(../images/skirt4.svg)';
+             }
+             kariokiba.style.color = 'black';
+             kariokiba.style.backgroundRepeat = 'no-repeat';
+             kariokiba.style.backgroundPosition = 'center';
+             kariokiba.style.backgroundColor = 'transparent';
+         }
         else{
             if(totalCountArr[i] >= 4000){
                 kariokiba.style.background = colorArr[selectColorNum][0];
@@ -241,6 +280,7 @@
             }else {
                 kariokiba.style.background = '#dcdcdc';
             }
+            kariokiba.style.color = 'white';
         }
             i++;
             }
