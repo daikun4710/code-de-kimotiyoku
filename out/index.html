@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta
     
     
@@ -87,13 +89,45 @@
 	      </div>
       </div>
       <div class="card col-3 text-center">
-	      <img src="../images/spare.svg" class="card-img-top mt-2"> 
+	      <img src="../images/yamatsu.png" class="card-img-top mt-2"> 
 	      <div class="card-body">
 		      <h3 class="card-title">山津です</h3>
 		      <p card-text></p>
 	      </div>
       </div>
     </div>
+
+    <!-- アコーディオン -->
+<section id="accordion">
+  <h2>よくある質問</h2>
+  <ul>
+    <li>
+      <dl>
+        <dt class="accordion_q">コードで気持ちよくってどんな意味ですか？</dt>
+        <dd class="accordion_a">日々の学習・仕事などで記述したコードを可視化させることで、自己肯定感を爆上げしようって意味です。</dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt class="accordion_q">Githubの草と同じではないですか？？</dt>
+        <dd class="accordion_a">デザイン的には似ていますが異なります。相違点は3つ。Github上でアクションを起こさずともボタン一つで可視化できる。ネット環境が必要ない。可視化させるものを変更させることができる。
+        </dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt class="accordion_q">使用言語は何ですか？</dt>
+        <dd class="accordion_a">HTML5 , CSS3 ,Bootstrap , JavaScript , nodeJS , VS Code API , JSON , jQuery</dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt class="accordion_q">今後の展望はありますか？</dt>
+        <dd class="accordion_a">TwitterAPIを用いて自分の結果を共有できるようにする。表示する期間や表示内容をカスタムできるようにする。拡張機能を入れた人達でランキング機能を搭載する。</dd>
+      </dl>
+    </li>
+  </ul>
+</section>
 
     <!-- footer -->
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -110,8 +144,17 @@
     </ul>
   </footer>
 
+  <!-- アコーディオンjQueary -->
+<script>
+  $(function(){
+  $('.accordion_q').click(function(){
+    $(this).next().slideToggle(200); //要素の開閉
+    $(this).toggleClass('arrow'); //矢印を回転させる
+  });
+  });
+</script>
     <script src="index.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy " crossorigin="anonymous "></script>
 </body>

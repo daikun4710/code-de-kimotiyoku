@@ -1,0 +1,58 @@
+/* アコーディオン */
+#accordion{
+  width: 100%;
+  background-color: #F7F7F7;
+  padding: 100px 0;
+}
+#accordion h2{
+  margin: auto;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+#accordion ul{
+  width: 50%;
+  list-style: none;
+  margin:  45px auto 0 auto;
+}
+#accordion ul li{
+  margin-bottom: 30px;
+  padding: 10px 5px;
+  border-radius: 16px;
+  background-color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.accordion_q{
+  position: relative;
+  padding-right: 35px;
+  padding-left: 10px;
+}
+.accordion_q:after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px #333;
+  border-right: solid 2px #333;
+  transform: rotate(135deg);
+}
+.accordion_q.arrow:after {
+  transform: rotate(-45deg);
+  top: 45%;
+}
+.accordion_a{
+  display: none;
+  margin-top: 35px;
+  padding: 35px;
+  background-color: #f0f0f0;
+}
