@@ -78,7 +78,13 @@
             contentCol.style.height = '75px';
             contentCol.style.marginRight = '5px';
             contentCol.style.marginBottom = '5px';
-            // contentCol.onmouseover = 'move(event)';
+
+            // const shodiv = document.createElement('div');
+            // contentCol.appendChild(shodiv);
+            
+            // hoverwidth = document.createElement('p');
+            // hoverwidth.setAttribute('class', 'hoverwidh');
+            // contentRow.appendChild(hoverwidth);
             contentRow.appendChild(contentCol);
         }
     }
@@ -172,16 +178,16 @@
             kariokiba = document.getElementById(n);
         if(selectColorNum == 3){
             if(totalCountArr[i] >= 4000){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee5.png)';
+                 kariokiba.style.backgroundImage = 'url(../images/coffee4.png)';
              }else if(totalCountArr[i] >= 3000){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee1.png)';
+                 kariokiba.style.backgroundImage = 'url(../images/coffee3.png)';
              }else if(totalCountArr[i] >= 2000){
                  kariokiba.style.backgroundImage = 'url(../images/coffee2.png)';
              }else if(totalCountArr[i] >= 1000){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee3.png)';
+                 kariokiba.style.backgroundImage = 'url(../images/coffee1.png)';
              }
              else{
-                kariokiba.style.backgroundImage = 'url(../images/coffee4.png)';
+                kariokiba.style.backgroundImage = 'url(../images/coffee5.png)';
              }
              kariokiba.style.color = 'black';
              kariokiba.style.backgroundRepeat = 'no-repeat';
@@ -190,16 +196,16 @@
          }
          else if(selectColorNum == 4){
             if(totalCountArr[i] >= 4000){
-                 kariokiba.style.backgroundImage = 'url(../images/skirt4.png)';
+                 kariokiba.style.backgroundImage = 'url(../images/skirt5.png)';
              }else if(totalCountArr[i] >= 3000){
-                 kariokiba.style.backgroundImage = 'url(../images/skirt3.png)';
+                 kariokiba.style.backgroundImage = 'url(../images/skirt1.png)';
              }else if(totalCountArr[i] >= 2000){
                  kariokiba.style.backgroundImage = 'url(../images/skirt2.png)';
              }else if(totalCountArr[i] >= 1000){
-                 kariokiba.style.backgroundImage = 'url(../images/skirt1.png)';
+                 kariokiba.style.backgroundImage = 'url(../images/skirt3.png)';
              }
              else{
-                kariokiba.style.backgroundImage = 'url(../images/skirt5.png)';
+                kariokiba.style.backgroundImage = 'url(../images/skirt4.png)';
              }
              kariokiba.style.color = 'black';
              kariokiba.style.backgroundRepeat = 'no-repeat';
@@ -287,6 +293,12 @@
     }
 
 
+
+/*
+ * Original version at
+ * http://red-team-design.com/making-html-dropdowns-not-suck
+ */ 
+
     // function move(event){
     //     this.style.backgroundColor = '#ffffff';
     // }
@@ -351,3 +363,5 @@
 //       "age": 16
 //     }
 // ]
+// var property = window.getComputedStyle($('.contentCol')[0], '::before').getPropertyValue('content');
+// console.log(property);  // 疑似要素取得
