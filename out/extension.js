@@ -74,8 +74,8 @@ function activate(context) {
     
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
-            vscode.window.showInformationMessage('ハア？');
-            vscode.env.openExternal(vscode.Uri.parse('file:///C:/Users/iwasaki/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html',true));
+            //vscode.window.showInformationMessage('ハア？');
+            vscode.env.openExternal(vscode.Uri.parse('file:///C:/Users/81803/amiralrouter.keypress-counter-1.0.0/out/index.html',true));
             //file:///C:/Users/iwasaki/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html
         })
     );

@@ -1,18 +1,14 @@
 {
-	"name": "keypress-counter",
-	"displayName": "Keypress Counter",
-	"description": "Records how many keys you press",
-	"version": "1.0.0",
-	"publisher": "amiralrouter",
+	"name": "tech-buzz",
+	"publisher": "techtest",
+	"displayName": "code-de-kimotiku",
+	"description": "tech buzz",
+	"version": "1.1.5",
 	"author": {
 		"name": "Amiral Router"
 	},
-	"homepage": "https://github.com/amiralrouter/keypress-counter",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/amiralrouter/keypress-counter"
-	},
-	"icon": "images/icon.png",
+	
+	"icon": "logo.png",
 	"engines": {
 		"vscode": "^1.64.0"
 	},

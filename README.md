@@ -1,2 +1,19 @@
-# Keypress Counter
-Records how many keys you press
+
+## 概要
+この拡張機能は打った文字数、消した文字数を日付けごとでカウントして、その総計ごとに色が表示される機能です。
+
+## 操作方法
+1. code-de-kimotiyokuをダウンロードします。
+2. インストールしたものを有効にします。
+3. いつも通り文字を入力したり、文字を消したりします。
+4. 左下の炎の横のボタンを押します。
+5. するとwebページに移動してカウントした総計ごとに色が表示されます。
+
+## 工夫
+- ボタンを押して飛んだwebページには様々な工夫があります。
+- 左上のプルダウンを押すと表示したい色、イラストが選べます。
+
+![OIP(3)](C:\Users\81803\amiralrouter.keypress-counter-1.0.0\images\OIP(3).jpg)
+## 提供元
+[Tech_Buzz](https://github.com/daikun4710/hack-u.git)
+
