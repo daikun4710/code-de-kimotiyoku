@@ -1,38 +1,44 @@
-// let jsonsData;
-// let fromJson;
-// let dataArr = [];
-// const promise = new Promise((resolve) => {
-//         //jsonデータの取得
-//     fetch("data.json")
-//     .then(function (response) {
-//         // console.log(response);
-//         return response.json();
-//     })
-//     .then(function (json) {
-//         jsonsData = JSON.stringify(json);
-//         fromJson = JSON.parse(jsonsData);
+let jsonsData;
+let fromJson;
+let dataArr = [];
+const promise = new Promise((resolve) => {
+        //jsonデータの取得
+        //../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json
+    fetch("/out/file2.json")
+    .then(function (response) {
+        // json形式で返す
+        return response.json();
+    })
+    .then(function (json) {
+        jsonsData = JSON.stringify(json);
+        fromJson = JSON.parse(jsonsData);
+        // for(const user of fromJson){
+        //     console.log(`私は${user.name}です。${user.age}才です。`);
+        // }
+
         
-//         for(let i = 0; i < fromJson.totalCount.length; i++){
-//             dataArr.unshift(fromJson.totalCount[i].count);
-//             console.log(fromJson.totalCount[i].count);
-//         }
-//         let newData = fromJson;
-//         let addData = {
-//             "day":"2022/8/14",
-//             "count":4000
-//         }
-//         newData.totalCount.push(addData);
-//         fromJson = newData;
-//         console.log(fromJson.totalCount[3].count);
+        
+        // for(let i = 0; i < fromJson.length; i++){
+        //     dataArr.unshift(fromJson.count);
+        //     console.log(fromJson.count);
+        // }
+        // let newData = fromJson;
+        // let addData = {
+        //     "day":"2022/8/14",
+        //     "count":4000
+        // }
+        // newData.push(addData);
+        // fromJson = newData;
+        // console.log(fromJson.count);
 
-        // // fromJson.totalCount.day = "2022/8/19";
-        // // fromJson.totalCount.count = 4000;
-        // // console.log(fromJson.totalCount[3].count);
-        // // ここの処理が終わったら次に行く
+        // fromJson.totalCount.day = "2022/8/19";
+        // fromJson.totalCount.count = 4000;
+        // console.log(fromJson.totalCount[3].count);
+        // ここの処理が終わったら次に行く
 
-    //     resolve("終わり");
-    // });
-//}).then((val) => {
+        resolve("終わり");
+    });
+}).then((val) => {
     //console.log(localStorage.getItem("test"));
     //console.log(val);
 
@@ -295,7 +301,7 @@
     // const storage = new LocalStorage(localStorage);
     // console.log(storage.getValue("beforeDay",0));
 
-// });
+});
 
 
 // [
