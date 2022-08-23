@@ -212,7 +212,24 @@
              kariokiba.style.backgroundPosition = 'center';
              kariokiba.style.backgroundColor = 'transparent';
          }
-
+         else if(selectColorNum == 5){
+            if(totalCountArr[i] >= 4000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu5.png)';
+             }else if(totalCountArr[i] >= 3000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu1.png)';
+             }else if(totalCountArr[i] >= 2000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu2.png)';
+             }else if(totalCountArr[i] >= 1000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu3.png)';
+             }
+             else{
+                kariokiba.style.backgroundImage = 'url(../images/pantsu4.png)';
+             }
+             kariokiba.style.color = 'black';
+             kariokiba.style.backgroundRepeat = 'no-repeat';
+             kariokiba.style.backgroundPosition = 'center';
+             kariokiba.style.backgroundColor = 'transparent';
+         }
         else{
             if(totalCountArr[i] >= 4000){
                 kariokiba.style.background = colorArr[selectColorNum][0];
@@ -267,6 +284,24 @@
              }
              else{
                 kariokiba.style.backgroundImage = 'url(../images/skirt4.png)';
+             }
+             kariokiba.style.color = 'black';
+             kariokiba.style.backgroundRepeat = 'no-repeat';
+             kariokiba.style.backgroundPosition = 'center';
+             kariokiba.style.backgroundColor = 'transparent';
+         }
+         else if(selectColorNum == 5){
+            if(totalCountArr[i] >= 4000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu5.png)';
+             }else if(totalCountArr[i] >= 3000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu1.png)';
+             }else if(totalCountArr[i] >= 2000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu2.png)';
+             }else if(totalCountArr[i] >= 1000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu3.png)';
+             }
+             else{
+                kariokiba.style.backgroundImage = 'url(../images/pantsu4.png)';
              }
              kariokiba.style.color = 'black';
              kariokiba.style.backgroundRepeat = 'no-repeat';
