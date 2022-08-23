@@ -1,71 +1,18 @@
-# vscode-omikuji README
 
-This is the README for your extension "vscode-omikuji". After writing up a brief description, we recommend including the following sections.
+## 概要
+この拡張機能は打った文字数、消した文字数を日付けごとでカウントして、その総計ごとに色が表示される機能です。
 
-## Features
+## 操作方法
+1. code-de-kimotiyokuをダウンロードします。
+2. インストールしたものを有効にします。
+3. いつも通り文字を入力したり、文字を消したりします。
+4. 左下の炎の横のボタンを押します。
+5. するとwebページに移動してカウントした総計ごとに色が表示されます。
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## 工夫
+- ボタンを押して飛んだwebページには様々な工夫があります。
+- 左上のプルダウンを押すと表示したい色、イラストが選べます。
+![nikkouyoku_man](https://user-images.githubusercontent.com/109592085/186003876-bca95dd2-625e-4c0f-a9b6-729718c2c9db.png))
+## 提供元
+[Tech_Buzz](https://github.com/daikun4710/hack-u.git)
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
