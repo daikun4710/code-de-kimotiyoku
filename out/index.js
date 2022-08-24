@@ -69,6 +69,12 @@ const promise = new Promise((resolve) => {
             ['coffee4.svg','coffee3.svg','coffee2.svg','coffee1.svg']//コーヒー
         ];
 
+        //色が変わる量
+        let level1 = 1;
+        let level2 = 250;
+        let level3 = 600;
+        let level4 = 1000;
+
     //レイアウトの作成(col)
     for (let i = 0; i < row; i++) {
         contentRow = document.createElement('div');
@@ -133,17 +139,18 @@ const promise = new Promise((resolve) => {
     let kariokiba;
     let kariCoffee;
     let i = 0;
+    
 
     //初回起動時の色の振り分け
     for(let n = dayofweek; n >= 0; n--){
         kariokiba = document.getElementById(n);
-        if(totalCountArr[i] >= 4000){
+        if(totalCountArr[i] >= level4){
             kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
-        }else if(totalCountArr[i] >= 3000){
+        }else if(totalCountArr[i] >= level3){
             kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
-        }else if(totalCountArr[i] >= 2000){
+        }else if(totalCountArr[i] >= level2){
             kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
-        }else if(totalCountArr[i] >= 1000){
+        }else if(totalCountArr[i] >= level1){
             kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
         }else {
             kariokiba.style.backgroundColor = '#dcdcdc';
@@ -153,13 +160,13 @@ const promise = new Promise((resolve) => {
     for (let k = 1; k < row; k++) {
         for (let l = col - 1; l >= 0; l--) {
             kariokiba = document.getElementById(k * 10 + l);
-            if(totalCountArr[i] >= 4000){
+            if(totalCountArr[i] >= level4){
                 kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
-            }else if(totalCountArr[i] >= 3000){
+            }else if(totalCountArr[i] >= level3){
                 kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
-            }else if(totalCountArr[i] >= 2000){
+            }else if(totalCountArr[i] >= level2){
                 kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
-            }else if(totalCountArr[i] >= 1000){
+            }else if(totalCountArr[i] >= level1){
                 kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
             }else {
                 kariokiba.style.backgroundColor = '#dcdcdc';
@@ -178,13 +185,13 @@ const promise = new Promise((resolve) => {
         for(let n = dayofweek; n >= 0; n--){
             kariokiba = document.getElementById(n);
         if(selectColorNum == 3){
-            if(totalCountArr[i] >= 4000){
+            if(totalCountArr[i] >= level4){
                  kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
-             }else if(totalCountArr[i] >= 3000){
+             }else if(totalCountArr[i] >= level3){
                  kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
-             }else if(totalCountArr[i] >= 2000){
+             }else if(totalCountArr[i] >= level2){
                  kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
-             }else if(totalCountArr[i] >= 1000){
+             }else if(totalCountArr[i] >= level1){
                  kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
              }
              else{
@@ -196,13 +203,13 @@ const promise = new Promise((resolve) => {
          
          }
         else{
-            if(totalCountArr[i] >= 4000){
+            if(totalCountArr[i] >= level4){
                 kariokiba.style.background = colorArr[selectColorNum][0];
-            }else if(totalCountArr[i] >= 3000){
+            }else if(totalCountArr[i] >= level3){
                 kariokiba.style.background = colorArr[selectColorNum][1];
-            }else if(totalCountArr[i] >= 2000){
+            }else if(totalCountArr[i] >= level2){
                 kariokiba.style.background = colorArr[selectColorNum][2];
-            }else if(totalCountArr[i] >= 1000){
+            }else if(totalCountArr[i] >= level1){
                 kariokiba.style.background = colorArr[selectColorNum][3];
             }else {
                 kariokiba.style.background = '#dcdcdc';
@@ -218,13 +225,13 @@ const promise = new Promise((resolve) => {
                 // coffee画像の処理
         if(selectColorNum == 3){
             
-           if(totalCountArr[i] >= 4000){
+           if(totalCountArr[i] >= level4){
                 kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
-            }else if(totalCountArr[i] >= 3000){
+            }else if(totalCountArr[i] >= level3){
                 kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
-            }else if(totalCountArr[i] >= 2000){
+            }else if(totalCountArr[i] >= level2){
                 kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
-            }else if(totalCountArr[i] >= 1000){
+            }else if(totalCountArr[i] >= level1){
                 kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
             }
             else{
@@ -236,13 +243,13 @@ const promise = new Promise((resolve) => {
         
         }
         else{
-            if(totalCountArr[i] >= 4000){
+            if(totalCountArr[i] >= level4){
                 kariokiba.style.background = colorArr[selectColorNum][0];
-            }else if(totalCountArr[i] >= 3000){
+            }else if(totalCountArr[i] >= level3){
                 kariokiba.style.background = colorArr[selectColorNum][1];
-            }else if(totalCountArr[i] >= 2000){
+            }else if(totalCountArr[i] >= level2){
                 kariokiba.style.background = colorArr[selectColorNum][2];
-            }else if(totalCountArr[i] >= 1000){
+            }else if(totalCountArr[i] >= level1){
                 kariokiba.style.background = colorArr[selectColorNum][3];
             }else {
                 kariokiba.style.background = '#dcdcdc';
