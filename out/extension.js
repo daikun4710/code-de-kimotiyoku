@@ -145,7 +145,6 @@ function activate(context) {
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
             vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
-            //file:///C:/Users/iwasaki/.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/index.html
         })
     );
 
@@ -157,11 +156,8 @@ function activate(context) {
     button.text = "$(flame)" + totalCount + " " + beforeDayStr;
     context.subscriptions.push(button);
     button.show();
-    // let beforeDayStr = beforeDay.toLocaleDateString();
     
     const updateLabel = () => {
-        // format total_keypress_count as  1,234,567
-        //let formatted_count = total_keypress_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         button.text = "$(flame)" + totalCount + " 頑張りを見る";
     };//beforeDayStr
     
@@ -177,8 +173,6 @@ function activate(context) {
             onConsecutiveEnded();
         }, 1000);
     }
-
-
 
     //テキストファイルが変更された回数を更新
     const onConsecutiveEnded = () => {
