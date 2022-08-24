@@ -61,7 +61,7 @@ function activate(context) {
     //     "beforeDayStr1":""
     // };
 
-    let data = fs.readFileSync("../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json", "utf-8");
+    let data = fs.readFileSync(absolutePath + "/out/file2.json", "utf-8");
     let datajs = JSON.parse(data);
 
     //初めて拡張機能を開いたとき(OK)
@@ -78,7 +78,7 @@ function activate(context) {
         datajs.beforeDayStr1 = dayStr;
         beforeDayStr = datajs.beforeDayStr1;
         data = JSON.stringify(datajs,null,4);
-        fs.writeFileSync("../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json", data, (err) => {
+        fs.writeFileSync(absolutePath + "/out/file2.json", data, (err) => {
             if (err) throw err;
             console.log('正常に書き込みが完了しました');
         });
@@ -104,15 +104,18 @@ function activate(context) {
             vscode.window.showInformationMessage('連日！');
         }
 
-        //データをbeforeDayPlace分ずらし、totalCountをbeforeDayPlace分0埋めする(OK)
-        for(let replaceDay = beforeDayPlace; replaceDay >= 1; replaceDay--){
-            datajs.totalCountArr.unshift(0);
-            datajs.totalCountArr.pop();
+        if(beforeDayPlace >= 1){
+            //データをbeforeDayPlace分ずらし、totalCountをbeforeDayPlace分0埋めする(OK)
+            for(let replaceDay = beforeDayPlace; replaceDay >= 1; replaceDay--){
+                datajs.totalCountArr.unshift(0);
+                datajs.totalCountArr.pop();
+            }
         }
 
         //日付を最新の状態にする(OK)
         for(let setday = 0; setday < dayArrLen; setday++){
-            if(setday < beforeDayPlace){
+            if(setday < startDay + beforeDayPlace){
+                datajs.dayArr[setday] = "";
                 continue;
             }
             datajs.dayArr[setday] = changeDayStr;
@@ -122,22 +125,26 @@ function activate(context) {
 
         changeDate = d;
         changeDayStr = changeDate.toLocaleDateString();
+        datajs.beforeDayStr1 = dayStr;
         beforeDayStr = datajs.beforeDayStr1;
 
         data = JSON.stringify(datajs,null,4);
-        fs.writeFileSync("../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json", data, (err) => {
+        fs.writeFileSync(absolutePath + "/out/file2.json", data, (err) => {
             if (err) throw err;
             console.log('正常に書き込みが完了しました');
         });
+    }else{
+        //開いたのが今日なら
+            vscode.window.showInformationMessage('当日！');
     }
 
-    data = fs.readFileSync("../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json", "utf-8");
+    data = fs.readFileSync(absolutePath + "/out/file2.json", "utf-8");
     datajs = JSON.parse(data);
 
     beforeDayStr = datajs.beforeDayStr1;
 
     data = JSON.stringify(datajs,null,4);
-    fs.writeFileSync("../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json", data, (err) => {
+    fs.writeFileSync(absolutePath + "/out/file2.json", data, (err) => {
         if (err) throw err;
         console.log('正常に書き込みが完了しました');
     });
@@ -145,6 +152,7 @@ function activate(context) {
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
             vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
+            vscode.window.showInformationMessage(absolutePath);
         })
     );
 
@@ -177,17 +185,17 @@ function activate(context) {
     //テキストファイルが変更された回数を更新
     const onConsecutiveEnded = () => {
         totalCount += consecutive_count;
-        
 
         //jsonファイル読み込み
-        data = fs.readFileSync("../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json", "utf-8");
+        data = fs.readFileSync(absolutePath + "/out/file2.json", "utf-8");
         datajs = JSON.parse(data);
-        let counts = datajs.totalCountArr[dayofweek];
-        datajs.totalCountArr[dayofweek] = counts + consecutive_count;
+        
+        let counts = datajs.totalCountArr[startDay];
+        datajs.totalCountArr[startDay] = counts + consecutive_count;
 
         //josnファイル書き込み
         data = JSON.stringify(datajs,null,4);
-        fs.writeFileSync("../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json", data, (err) => {
+        fs.writeFileSync(absolutePath + "/out/file2.json", data, (err) => {
             if (err) throw err;
         });
 
