@@ -127,13 +127,6 @@ function activate(context) {
         console.log('正常に書き込みが完了しました');
     });
 
-    context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
-            vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
-        })
-    );
-
-    
     //VSCodeの右下にボタンを表示
     const button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
     // //↓ちょっとこれ分からんかった
@@ -145,6 +138,26 @@ function activate(context) {
     const updateLabel = () => {
         button.text = "$(flame)" + datajs.totalCountArr[startDay] + " 頑張りを見る";
     };
+    const updateLabelAction = () => {
+        button.text = "$(flame)" + "処理中です" + "$(flame)";
+    }
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
+            let term = vscode.window.createTerminal('Dawn');
+            term.show();
+            term.sendText(`npx webpack`);
+            updateLabelAction();
+            setTimeout(() => {
+                vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
+                updateLabel();
+                term.sendText(`exit`);
+            }, 8000);
+        })
+    );
+
+    
+    
     
     updateLabel();
     
