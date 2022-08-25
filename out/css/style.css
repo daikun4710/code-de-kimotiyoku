@@ -192,3 +192,39 @@ a.btn--orange:hover {
   color: #fff;
   background: #fb9881;
 }
+
+
+
+/* 文字数のcss */
+h2 {
+  position: relative;
+  padding-left: 5em;
+  font-size: calc(1rem + .9vw);
+}
+
+h2 span {
+  position: absolute;
+  top: -17px;
+  left: -170px;
+  padding: .25rem 0;
+  color: #fff;
+  border-radius: 10px;
+  background: #0075a9;
+  width: 300px;
+}
+
+h2 span i {
+  margin-right: 1rem;
+}
+
+h2 span:after {
+  position: absolute;
+  top: calc(50% - 7px);
+  right: -11px;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 7px 0 7px 12px;
+  border-style: solid;
+  border-color: transparent transparent transparent #0075a9;
+}

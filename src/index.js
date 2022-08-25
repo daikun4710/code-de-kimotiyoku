@@ -1,7 +1,7 @@
 let jsonsData;
 const promise = new Promise((resolve) => {
     jsonsData = require('../out/file2.json');
-    console.log(jsonsData.totalCountArr);
+    // console.log(jsonsData.totalCountArr);
         resolve("終わり");
 }).then((val) => {
         
@@ -96,6 +96,15 @@ const promise = new Promise((resolve) => {
 
     //【仮】試験的に、書いた回数、左が最新
     let totalCountArr = jsonsData.totalCountArr;
+
+    const touchCount = document.getElementById('touchCount');
+    let touchCountSum = 0;
+    console.log('test');
+    for(let i = 0; i<totalCountArr.length; i++){
+        touchCountSum = touchCountSum  + totalCountArr[i];
+    }
+    touchCount.innerHTML = touchCountSum;
+    // console.log();
 
     //【仮】選択した色の二次元配列の番号を入れる。緑=0、赤=1、青=2、初期値=0
     let selectColorNum = 0;

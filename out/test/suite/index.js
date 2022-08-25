@@ -30,7 +30,7 @@ function run() {
                 });
             }
             catch (err) {
-                console.error(err);
+                // console.error(err);
                 e(err);
             }
         });
