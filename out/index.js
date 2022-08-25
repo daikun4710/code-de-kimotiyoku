@@ -2,6 +2,11 @@ let jsonsData;
 let fromJson;
 let dataArr = [];
 const promise = new Promise((resolve) => {
+    let unique = require('uniq');
+
+    let data = [1, 2, 2, 3, 4, 5, 5, 5, 6];
+
+    console.log(unique(data));
         //jsonデータの取得
         //../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json
     // fetch("/out/file2.json")
