@@ -145,14 +145,14 @@ function activate(context) {
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
             let term = vscode.window.createTerminal('Dawn');
+            term.sendText(`cd ` + absolutePath);
             term.show();
             term.sendText(`npx webpack`);
             updateLabelAction();
             setTimeout(() => {
                 vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
                 updateLabel();
-                term.sendText(`exit`);
-            }, 8000);
+            }, 15000);
         })
     );
 
