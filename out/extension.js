@@ -41,43 +41,8 @@ function activate(context) {
     const newPath = path.replaceAll('\\','/');
     const absolutePath = newPath.replace('c','C');
 
-    //jsonファイル初期値
-    // let obj = {
-    //     "dayArr":[
-    //         "","","","","","","",
-    //         "","","","","","","",
-    //         "","","","","","","",
-    //         "","","","","","","",
-    //         "","","","","","","",
-    //         "","","","","","",""
-    //     ],
-    //     "totalCountArr":[
-    //         0,0,0,0,0,0,0,
-    //         0,0,0,0,0,0,0,
-    //         0,0,0,0,0,0,0,
-    //         0,0,0,0,0,0,0,
-    //         0,0,0,0,0,0,0,
-    //         0,0,0,0,0,0,0
-    //     ],
-    //     "beforeDayStr1":""
-    // };
-
-    // let datajs = require("./file2.json.js");
-    
-    // vscode.window.showInformationMessage(datajs.beforeDayStr1 + 'ここまで');
-    // datajs.beforeDayStr1 = "tester";
     let data = fs.readFileSync(absolutePath + "/out/file2.json", "utf-8");
     let datajs = JSON.parse(data);
-    // vscode.window.showInformationMessage(datajs + '行けた');
-    // let datajs = "test";
-
-    // data = JSON.stringify(datajs);
-    // fs.writeFileSync(absolutePath + "/out/file2.json.js", datajs, (err) => {
-    //     if (err) throw err;
-    //     vscode.window.showInformationMessage(datajs.beforeDayStr1);
-    // });
-    
-    // let testData = datajs.beforeDayStr1;
 
     //初めて拡張機能を開いたとき(OK)
     if(datajs.beforeDayStr1 == ""){
@@ -111,16 +76,10 @@ function activate(context) {
             changeDayStr = changeDate.toLocaleDateString();
             beforeDayPlace++;
         }
-        vscode.window.showInformationMessage(beforeDayPlace);
 
         //changeDateの初期化
         changeDate = new Date();
         changeDayStr = changeDate.toLocaleDateString();
-
-        //開いたのが昨日なら
-        if(beforeDayPlace <= 1){
-            vscode.window.showInformationMessage('連日！');
-        }
 
         if(beforeDayPlace >= 7 || datajs.beforeDayofweek > dayofweek){
             let startBeforeDay = weekLen - datajs.beforeDayofweek - 1;
@@ -155,9 +114,6 @@ function activate(context) {
             if (err) throw err;
             console.log('正常に書き込みが完了しました');
         });
-    }else{
-        //開いたのが今日なら
-            vscode.window.showInformationMessage('当日！');
     }
 
     data = fs.readFileSync(absolutePath + "/out/file2.json", "utf-8");
@@ -173,9 +129,7 @@ function activate(context) {
 
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
-            vscode.env.openExternal(vscode.Uri.parse("http://localhost" + absolutePath + "/out/index.html",true));
-            vscode.window.showInformationMessage(absolutePath);
-            // http://localhost:3000/out/
+            vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
         })
     );
 
@@ -184,12 +138,12 @@ function activate(context) {
     const button = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
     // //↓ちょっとこれ分からんかった
     button.command = 'vscode-omikuji.helloWorld';
-    button.text = "$(flame)" + totalCount + " " + beforeDayStr;
+    button.text = "$(flame)" + datajs.totalCountArr[startDay] + " " + beforeDayStr;
     context.subscriptions.push(button);
     button.show();
     
     const updateLabel = () => {
-        button.text = "$(flame)" + totalCount + " 頑張りを見る";
+        button.text = "$(flame)" + datajs.totalCountArr[startDay] + " 頑張りを見る";
     };
     
     updateLabel();
