@@ -1,7 +1,7 @@
 let jsonsData;
 const promise = new Promise((resolve) => {
     jsonsData = require('../out/file2.json');
-
+    console.log(jsonsData.totalCountArr);
         resolve("終わり");
 }).then((val) => {
         
