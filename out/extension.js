@@ -175,7 +175,6 @@ function activate(context) {
     //テキストファイルが変更された回数を更新
     const onConsecutiveEnded = () => {
 
-        // エラー
 
         totalCount += consecutive_count;
 
