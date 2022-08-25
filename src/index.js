@@ -253,13 +253,13 @@ const promise = new Promise((resolve) => {
         
         }
          else if(selectColorNum == 4){
-            if(totalCountArr[i] >= 4000){
+            if(totalCountArr[i] >= level4){
                  kariokiba.style.backgroundImage = 'url(../images/skirt5.png)';
-             }else if(totalCountArr[i] >= 3000){
+             }else if(totalCountArr[i] >= level3){
                  kariokiba.style.backgroundImage = 'url(../images/skirt1.png)';
-             }else if(totalCountArr[i] >= 2000){
+             }else if(totalCountArr[i] >= level2){
                  kariokiba.style.backgroundImage = 'url(../images/skirt2.png)';
-             }else if(totalCountArr[i] >= 1000){
+             }else if(totalCountArr[i] >= level1){
                  kariokiba.style.backgroundImage = 'url(../images/skirt3.png)';
              }
              else{
@@ -271,13 +271,13 @@ const promise = new Promise((resolve) => {
              kariokiba.style.backgroundColor = 'transparent';
          }
          else if(selectColorNum == 5){
-            if(totalCountArr[i] >= 4000){
+            if(totalCountArr[i] >= level4){
                  kariokiba.style.backgroundImage = 'url(../images/pantsu5.png)';
-             }else if(totalCountArr[i] >= 3000){
+             }else if(totalCountArr[i] >= level3){
                  kariokiba.style.backgroundImage = 'url(../images/pantsu1.png)';
-             }else if(totalCountArr[i] >= 2000){
+             }else if(totalCountArr[i] >= level2){
                  kariokiba.style.backgroundImage = 'url(../images/pantsu2.png)';
-             }else if(totalCountArr[i] >= 1000){
+             }else if(totalCountArr[i] >= level1){
                  kariokiba.style.backgroundImage = 'url(../images/pantsu3.png)';
              }
              else{
