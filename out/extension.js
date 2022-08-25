@@ -27,6 +27,7 @@ function activate(context) {
     //前回開いた日付のインデックス値
     let beforeDayPlace = 0;
     let backNum = 0;
+    let dayofweekSpace = 0;
 
     let beforeDayStr;
     let consecutive_count = 0;
@@ -61,8 +62,22 @@ function activate(context) {
     //     "beforeDayStr1":""
     // };
 
+    // let datajs = require("./file2.json.js");
+    
+    // vscode.window.showInformationMessage(datajs.beforeDayStr1 + 'ここまで');
+    // datajs.beforeDayStr1 = "tester";
     let data = fs.readFileSync(absolutePath + "/out/file2.json", "utf-8");
     let datajs = JSON.parse(data);
+    // vscode.window.showInformationMessage(datajs + '行けた');
+    // let datajs = "test";
+
+    // data = JSON.stringify(datajs);
+    // fs.writeFileSync(absolutePath + "/out/file2.json.js", datajs, (err) => {
+    //     if (err) throw err;
+    //     vscode.window.showInformationMessage(datajs.beforeDayStr1);
+    // });
+    
+    // let testData = datajs.beforeDayStr1;
 
     //初めて拡張機能を開いたとき(OK)
     if(datajs.beforeDayStr1 == ""){
@@ -77,6 +92,7 @@ function activate(context) {
 
         datajs.beforeDayStr1 = dayStr;
         beforeDayStr = datajs.beforeDayStr1;
+        datajs.beforeDayofweek = dayofweek;
         data = JSON.stringify(datajs,null,4);
         fs.writeFileSync(absolutePath + "/out/file2.json", data, (err) => {
             if (err) throw err;
@@ -85,8 +101,9 @@ function activate(context) {
         
     //現在の日付と前回の日付が違かったら、順番を整理する
     }else if(datajs.beforeDayStr1 != dayStr){
-        //前回開いた日付が現在の日付から何日前かを求める
-        for(let offDay = 0; offDay < dayArrLen; offDay++){
+
+        //表示する範囲で前回開いた日付が何日前かを求める
+        for(let offDay = 0; offDay < dayArrLen - (6 - dayofweek); offDay++){
             if(datajs.beforeDayStr1 == changeDayStr){
                 break;
             }
@@ -94,9 +111,10 @@ function activate(context) {
             changeDayStr = changeDate.toLocaleDateString();
             beforeDayPlace++;
         }
+        vscode.window.showInformationMessage(beforeDayPlace);
 
         //changeDateの初期化
-        changeDate = d;
+        changeDate = new Date();
         changeDayStr = changeDate.toLocaleDateString();
 
         //開いたのが昨日なら
@@ -104,9 +122,12 @@ function activate(context) {
             vscode.window.showInformationMessage('連日！');
         }
 
-        if(beforeDayPlace >= 1){
-            //データをbeforeDayPlace分ずらし、totalCountをbeforeDayPlace分0埋めする(OK)
-            for(let replaceDay = beforeDayPlace; replaceDay >= 1; replaceDay--){
+        if(beforeDayPlace >= 7 || datajs.beforeDayofweek > dayofweek){
+            let startBeforeDay = weekLen - datajs.beforeDayofweek - 1;
+            //移動する距離
+            let moveDistance = beforeDayPlace + startDay - startBeforeDay;
+            //データをmoveDistance分ずらし、totalCountをmoveDistance分0埋めする(OK)
+            for(let replaceDay = moveDistance; replaceDay >= 1; replaceDay--){
                 datajs.totalCountArr.unshift(0);
                 datajs.totalCountArr.pop();
             }
@@ -114,7 +135,7 @@ function activate(context) {
 
         //日付を最新の状態にする(OK)
         for(let setday = 0; setday < dayArrLen; setday++){
-            if(setday < startDay + beforeDayPlace){
+            if(setday < startDay){
                 datajs.dayArr[setday] = "";
                 continue;
             }
@@ -127,6 +148,7 @@ function activate(context) {
         changeDayStr = changeDate.toLocaleDateString();
         datajs.beforeDayStr1 = dayStr;
         beforeDayStr = datajs.beforeDayStr1;
+        datajs.beforeDayofweek = dayofweek;
 
         data = JSON.stringify(datajs,null,4);
         fs.writeFileSync(absolutePath + "/out/file2.json", data, (err) => {
@@ -151,8 +173,9 @@ function activate(context) {
 
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
-            vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
+            vscode.env.openExternal(vscode.Uri.parse("http://localhost" + absolutePath + "/out/index.html",true));
             vscode.window.showInformationMessage(absolutePath);
+            // http://localhost:3000/out/
         })
     );
 
@@ -167,7 +190,7 @@ function activate(context) {
     
     const updateLabel = () => {
         button.text = "$(flame)" + totalCount + " 頑張りを見る";
-    };//beforeDayStr
+    };
     
     updateLabel();
     
@@ -184,6 +207,9 @@ function activate(context) {
 
     //テキストファイルが変更された回数を更新
     const onConsecutiveEnded = () => {
+
+        // エラー
+
         totalCount += consecutive_count;
 
         //jsonファイル読み込み

@@ -4,14 +4,14 @@ let dataArr = [];
 const promise = new Promise((resolve) => {
         //jsonデータの取得
         //../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json
-    fetch("/out/file2.json")
-    .then(function (response) {
-        // json形式で返す
-        return response.json();
-    })
-    .then(function (json) {
-        jsonsData = JSON.stringify(json);
-        fromJson = JSON.parse(jsonsData);
+    // fetch("/out/file2.json")
+    // .then(function (response) {
+    //     // json形式で返す
+    //     return response.json();
+    // })
+    // .then(function (json) {
+    //     jsonsData = JSON.stringify(json);
+    //     fromJson = JSON.parse(jsonsData);
         // for(const user of fromJson){
         //     console.log(`私は${user.name}です。${user.age}才です。`);
         // }
@@ -37,7 +37,7 @@ const promise = new Promise((resolve) => {
         // ここの処理が終わったら次に行く
 
         resolve("終わり");
-    });
+    // });
 }).then((val) => {
     //console.log(localStorage.getItem("test"));
     //console.log(val);
