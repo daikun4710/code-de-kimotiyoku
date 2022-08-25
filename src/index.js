@@ -1,53 +1,9 @@
 let jsonsData;
-let fromJson;
-let dataArr = [];
 const promise = new Promise((resolve) => {
-    let unique = require('uniq');
-
-    let data = [1, 2, 2, 3, 4, 5, 5, 5, 6];
-
-    console.log(unique(data));
-        //jsonデータの取得
-        //../../../../.vscode/extensions/amiralrouter.keypress-counter-1.0.0/out/file2.json
-    // fetch("/out/file2.json")
-    // .then(function (response) {
-    //     // json形式で返す
-    //     return response.json();
-    // })
-    // .then(function (json) {
-    //     jsonsData = JSON.stringify(json);
-    //     fromJson = JSON.parse(jsonsData);
-        // for(const user of fromJson){
-        //     console.log(`私は${user.name}です。${user.age}才です。`);
-        // }
-
-        
-        
-        // for(let i = 0; i < fromJson.length; i++){
-        //     dataArr.unshift(fromJson.count);
-        //     console.log(fromJson.count);
-        // }
-        // let newData = fromJson;
-        // let addData = {
-        //     "day":"2022/8/14",
-        //     "count":4000
-        // }
-        // newData.push(addData);
-        // fromJson = newData;
-        // console.log(fromJson.count);
-
-        // fromJson.totalCount.day = "2022/8/19";
-        // fromJson.totalCount.count = 4000;
-        // console.log(fromJson.totalCount[3].count);
-        // ここの処理が終わったら次に行く
+    jsonsData = require('../out/file2.json');
 
         resolve("終わり");
-    // });
 }).then((val) => {
-    //console.log(localStorage.getItem("test"));
-    //console.log(val);
-
-    
         
         const content = document.getElementById('content');
     //曜日によって変更する位置が変更される
@@ -99,8 +55,6 @@ const promise = new Promise((resolve) => {
         }
     }
 
-    // let beforeDay = 6 - dayofweek;
-    // let totalCount;
 
     //前回開いた日付と現在の日付が同じか確認
     if(localStorage.getItem("beforeDay") != dayStr){
@@ -135,8 +89,7 @@ const promise = new Promise((resolve) => {
 
 
     //【仮】試験的に、書いた回数、左が最新
-    let totalCountArr = [4000,3000,2000,1000,0,4000,3000,2000,1000,0,4000,3000,2000,1000,0,4000,3000,2000,1000,0,];
-
+    let totalCountArr = jsonsData.totalCountArr;
 
     //【仮】選択した色の二次元配列の番号を入れる。緑=0、赤=1、青=2、初期値=0
     let selectColorNum = 0;
@@ -147,19 +100,24 @@ const promise = new Promise((resolve) => {
     
 
     //初回起動時の色の振り分け
-    for(let n = dayofweek; n >= 0; n--){
+    for(let n = 6; n >= 0; n--){
         kariokiba = document.getElementById(n);
-        if(totalCountArr[i] >= level4){
-            kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
-        }else if(totalCountArr[i] >= level3){
-            kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
-        }else if(totalCountArr[i] >= level2){
-            kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
-        }else if(totalCountArr[i] >= level1){
-            kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
-        }else {
-            kariokiba.style.backgroundColor = '#dcdcdc';
+        if(n <= dayofweek){
+            if(totalCountArr[i] >= level4){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][0];
+            }else if(totalCountArr[i] >= level3){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][1];
+            }else if(totalCountArr[i] >= level2){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][2];
+            }else if(totalCountArr[i] >= level1){
+                kariokiba.style.backgroundColor = colorArr[selectColorNum][3];
+            }else {
+                kariokiba.style.backgroundColor = '#dcdcdc';
+            }
+        }else{
+            kariokiba.style.backgroundColor = 'transparent';
         }
+        
         i++;
     }
     for (let k = 1; k < row; k++) {
@@ -187,39 +145,43 @@ const promise = new Promise((resolve) => {
     //二回目から------------------------------------------------------------------
     function colorClick(selectColorNum){
         i = 0;
-        for(let n = dayofweek; n >= 0; n--){
+        for(let n = 6; n >= 0; n--){
             kariokiba = document.getElementById(n);
-        if(selectColorNum == 3){
-            if(totalCountArr[i] >= level4){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
-             }else if(totalCountArr[i] >= level3){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
-             }else if(totalCountArr[i] >= level2){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
-             }else if(totalCountArr[i] >= level1){
-                 kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
-             }
-             else{
-                kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
-             }
-             kariokiba.style.backgroundRepeat = 'no-repeat';
-             kariokiba.style.backgroundPosition = 'center';
-             kariokiba.style.backgroundColor = 'transparent';
-         
-         }
-        else{
-            if(totalCountArr[i] >= level4){
-                kariokiba.style.background = colorArr[selectColorNum][0];
-            }else if(totalCountArr[i] >= level3){
-                kariokiba.style.background = colorArr[selectColorNum][1];
-            }else if(totalCountArr[i] >= level2){
-                kariokiba.style.background = colorArr[selectColorNum][2];
-            }else if(totalCountArr[i] >= level1){
-                kariokiba.style.background = colorArr[selectColorNum][3];
-            }else {
-                kariokiba.style.background = '#dcdcdc';
+            if(n <= dayofweek){
+                if(selectColorNum == 3){
+                    if(totalCountArr[i] >= level4){
+                         kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
+                     }else if(totalCountArr[i] >= level3){
+                         kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
+                     }else if(totalCountArr[i] >= level2){
+                         kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
+                     }else if(totalCountArr[i] >= level1){
+                         kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
+                     }
+                     else{
+                        kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
+                     }
+                     kariokiba.style.backgroundRepeat = 'no-repeat';
+                     kariokiba.style.backgroundPosition = 'center';
+                     kariokiba.style.backgroundColor = 'transparent';
+                 
+                 }
+                else{
+                    if(totalCountArr[i] >= level4){
+                        kariokiba.style.background = colorArr[selectColorNum][0];
+                    }else if(totalCountArr[i] >= level3){
+                        kariokiba.style.background = colorArr[selectColorNum][1];
+                    }else if(totalCountArr[i] >= level2){
+                        kariokiba.style.background = colorArr[selectColorNum][2];
+                    }else if(totalCountArr[i] >= level1){
+                        kariokiba.style.background = colorArr[selectColorNum][3];
+                    }else {
+                        kariokiba.style.background = '#dcdcdc';
+                    }
+                }
+            }else{
+                kariokiba.style.backgroundColor = 'transparent';
             }
-        }
             i++;
         }
         for (let k = 1; k < row; k++) {
@@ -264,69 +226,4 @@ const promise = new Promise((resolve) => {
             }
         }
     }
-
-
-    // function move(event){
-    //     this.style.backgroundColor = '#ffffff';
-    // }
-
-    // for(let i = 0; i < dataArr.length; i++){
-    //     console.log(dataArr[i]);
-    // }
-
-
-    // fetch("data.json")
-    // .then(function (response) {
-    //     // console.log(response);
-    //     return response.json();
-    //   })
-    //   .then(function (json) {
-    //     let jsonsData = JSON.stringify(json);
-    //     let fromJson = JSON.parse(jsonsData);
-    //     console.log(fromJson[0].name);
-
-    //   });
-
-
-
-
-
-    //表示するdivのタグ数の取得
-
-
-
-    //曜日によって表示するdivの取得
-
-    //console.log(localStorage.getItem("beforeDay"));
-
-    // class LocalStorage {
-    //     constructor(localStorage) {
-    //         this.localStorage = localStorage;
-    //     }
-    //     getValue(key, def) {
-    //         return this.localStorage.get(key, def);
-    //     }
-    //     setValue(key, value) {
-    //         this.localStorage.update(key, value);
-    //     }
-    // }
-    // const storage = new LocalStorage(localStorage);
-    // console.log(storage.getValue("beforeDay",0));
-
 });
-
-
-// [
-//     {
-//       "name": "yamada",
-//       "age": 30
-//     },
-//     {
-//       "name": "sasaki",
-//       "age": 40
-//     },
-//     {
-//       "name": "kondo",
-//       "age": 16
-//     }
-// ]
