@@ -27,7 +27,8 @@ const promise = new Promise((resolve) => {
             ['#022D10', '#088D34', '#3AF478', '#CBFCDB'],//緑
             ['#8F1209', '#EF1E0F', '#F34A3E', '#F9A49E'],//赤
             ['#0E0157', '#1E02BC', '#4727FD', '#9D8CFE'],//青
-            ['coffee4.svg','coffee3.svg','coffee2.svg','coffee1.svg']//コーヒー
+            ['coffee4.png','coffee3.png','coffee2.png','coffee1.png']//コーヒー
+            ['skirt4.png','skirt3.png','skirt2.png','skirt1.png']//スカート
         ];
 
         //色が変わる量
@@ -50,7 +51,13 @@ const promise = new Promise((resolve) => {
             contentCol.style.height = '75px';
             contentCol.style.marginRight = '5px';
             contentCol.style.marginBottom = '5px';
-            // contentCol.onmouseover = 'move(event)';
+
+            // const shodiv = document.createElement('div');
+            // contentCol.appendChild(shodiv);
+            
+            // hoverwidth = document.createElement('p');
+            // hoverwidth.setAttribute('class', 'hoverwidh');
+            // contentRow.appendChild(hoverwidth);
             contentRow.appendChild(contentCol);
         }
     }
@@ -81,7 +88,6 @@ const promise = new Promise((resolve) => {
             contentDay.style.backgroundColor = '#dcdcdc';
             day = d.setDate(d.getDate() - 1);
             dayStr = d.toLocaleDateString().substring(5);
-            
         }
     }
 
@@ -141,7 +147,6 @@ const promise = new Promise((resolve) => {
     document.getElementById('color').onchange = function(){
         colorClick(this.value);
     }
-
     //二回目から------------------------------------------------------------------
     function colorClick(selectColorNum){
         i = 0;
@@ -150,22 +155,58 @@ const promise = new Promise((resolve) => {
             if(n <= dayofweek){
                 if(selectColorNum == 3){
                     if(totalCountArr[i] >= level4){
-                         kariokiba.style.backgroundImage = 'url(../images/coffee4.svg)';
-                     }else if(totalCountArr[i] >= level3){
-                         kariokiba.style.backgroundImage = 'url(../images/coffee3.svg)';
-                     }else if(totalCountArr[i] >= level2){
-                         kariokiba.style.backgroundImage = 'url(../images/coffee2.svg)';
-                     }else if(totalCountArr[i] >= level1){
-                         kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
-                     }
-                     else{
-                        kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
-                     }
-                     kariokiba.style.backgroundRepeat = 'no-repeat';
-                     kariokiba.style.backgroundPosition = 'center';
-                     kariokiba.style.backgroundColor = 'transparent';
-                 
-                 }
+                        kariokiba.style.backgroundImage = 'url(../images/coffee4.png)';
+                    }else if(totalCountArr[i] >= level3){
+                        kariokiba.style.backgroundImage = 'url(../images/coffee3.png)';
+                    }else if(totalCountArr[i] >= level2){
+                        kariokiba.style.backgroundImage = 'url(../images/coffee2.png)';
+                    }else if(totalCountArr[i] >= level1){
+                        kariokiba.style.backgroundImage = 'url(../images/coffee1.png)';
+                    }
+                    else{
+                        kariokiba.style.backgroundImage = 'url(../images/coffee5.png)';
+                    }
+                    kariokiba.style.color = 'black';
+                    kariokiba.style.backgroundRepeat = 'no-repeat';
+                    kariokiba.style.backgroundPosition = 'center';
+                    kariokiba.style.backgroundColor = 'transparent';
+                }
+                else if(selectColorNum == 4){
+                    if(totalCountArr[i] >= level4){
+                        kariokiba.style.backgroundImage = 'url(../images/skirt5.png)';
+                    }else if(totalCountArr[i] >= level3){
+                        kariokiba.style.backgroundImage = 'url(../images/skirt1.png)';
+                    }else if(totalCountArr[i] >= level2){
+                        kariokiba.style.backgroundImage = 'url(../images/skirt2.png)';
+                    }else if(totalCountArr[i] >= level1){
+                        kariokiba.style.backgroundImage = 'url(../images/skirt3.png)';
+                    }
+                    else{
+                        kariokiba.style.backgroundImage = 'url(../images/skirt4.png)';
+                    }
+                    kariokiba.style.color = 'black';
+                    kariokiba.style.backgroundRepeat = 'no-repeat';
+                    kariokiba.style.backgroundPosition = 'center';
+                    kariokiba.style.backgroundColor = 'transparent';
+                }
+                else if(selectColorNum == 5){
+                    if(totalCountArr[i] >= level4){
+                        kariokiba.style.backgroundImage = 'url(../images/pantsu5.png)';
+                    }else if(totalCountArr[i] >= level3){
+                        kariokiba.style.backgroundImage = 'url(../images/pantsu1.png)';
+                    }else if(totalCountArr[i] >= level2){
+                        kariokiba.style.backgroundImage = 'url(../images/pantsu2.png)';
+                    }else if(totalCountArr[i] >= level1){
+                        kariokiba.style.backgroundImage = 'url(../images/pantsu3.png)';
+                    }
+                    else{
+                        kariokiba.style.backgroundImage = 'url(../images/pantsu4.png)';
+                    }
+                    kariokiba.style.color = 'black';
+                    kariokiba.style.backgroundRepeat = 'no-repeat';
+                    kariokiba.style.backgroundPosition = 'center';
+                    kariokiba.style.backgroundColor = 'transparent';
+                }
                 else{
                     if(totalCountArr[i] >= level4){
                         kariokiba.style.background = colorArr[selectColorNum][0];
@@ -178,6 +219,7 @@ const promise = new Promise((resolve) => {
                     }else {
                         kariokiba.style.background = '#dcdcdc';
                     }
+                    kariokiba.style.color = 'white';
                 }
             }else{
                 kariokiba.style.backgroundColor = 'transparent';
@@ -202,13 +244,50 @@ const promise = new Promise((resolve) => {
                 kariokiba.style.backgroundImage = 'url(../images/coffee1.svg)';
             }
             else{
-                  kariokiba.style.backgroundImage = 'url(../images/coffee5.svg)';
+                  kariokiba.style.backgroundImage = 'url(../images/coffee5.png)';
              }
+             kariokiba.style.color = 'black';
             kariokiba.style.backgroundRepeat = 'no-repeat';
             kariokiba.style.backgroundPosition = 'center';
             kariokiba.style.backgroundColor = 'transparent';
         
         }
+         else if(selectColorNum == 4){
+            if(totalCountArr[i] >= 4000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt5.png)';
+             }else if(totalCountArr[i] >= 3000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt1.png)';
+             }else if(totalCountArr[i] >= 2000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt2.png)';
+             }else if(totalCountArr[i] >= 1000){
+                 kariokiba.style.backgroundImage = 'url(../images/skirt3.png)';
+             }
+             else{
+                kariokiba.style.backgroundImage = 'url(../images/skirt4.png)';
+             }
+             kariokiba.style.color = 'black';
+             kariokiba.style.backgroundRepeat = 'no-repeat';
+             kariokiba.style.backgroundPosition = 'center';
+             kariokiba.style.backgroundColor = 'transparent';
+         }
+         else if(selectColorNum == 5){
+            if(totalCountArr[i] >= 4000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu5.png)';
+             }else if(totalCountArr[i] >= 3000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu1.png)';
+             }else if(totalCountArr[i] >= 2000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu2.png)';
+             }else if(totalCountArr[i] >= 1000){
+                 kariokiba.style.backgroundImage = 'url(../images/pantsu3.png)';
+             }
+             else{
+                kariokiba.style.backgroundImage = 'url(../images/pantsu4.png)';
+             }
+             kariokiba.style.color = 'black';
+             kariokiba.style.backgroundRepeat = 'no-repeat';
+             kariokiba.style.backgroundPosition = 'center';
+             kariokiba.style.backgroundColor = 'transparent';
+         }
         else{
             if(totalCountArr[i] >= level4){
                 kariokiba.style.background = colorArr[selectColorNum][0];
@@ -221,6 +300,7 @@ const promise = new Promise((resolve) => {
             }else {
                 kariokiba.style.background = '#dcdcdc';
             }
+            kariokiba.style.color = 'white';
         }
             i++;
             }
