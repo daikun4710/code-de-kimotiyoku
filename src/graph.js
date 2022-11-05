@@ -37,21 +37,25 @@ const promise = new Promise((resolve) => {
         let level3 = 600;
         let level4 = 1000;
 
-        // 日付ごとの書いた量
+        //ダミーデータ
+        // let totalCountArrDummy = [800,500,250,500,300,100,700,600,200,100,400,500,900,1000,300,500,600,100,300,500,300,700,800,200,400,500,200,600,400,500,200,250,500,300,100,700,600,200,100,400,100,250];
+        // let totalCountArrDummyReverse = [];
+
+        // 日付ごとの書いた量(本物)
         let totalCountArr = jsonsData.totalCountArr;
+        //ダミー
+        // totalCountArr = totalCountArrDummy;
+
         let totalCountReverse = [];
         // 対応する日付の配列
         let totalDayArr = jsonsData.dayArr;
         let totalDayArrReverse = [];
 
-        //ダミーデータ
-        let totalCountArrDummy = [800,500,250,500,300,100,700,600,200,100,400,500,900,1000,300,500,600,100,300,500,300,700,800,200,400,500,200,600,400,500,200,250,500,300,100,700,600,200,100,400];
-        let totalCountArrDummyReverse = [];
 
-        for(let i = totalCountArrDummy.length - 1; i >= 0; i--){
+        for(let i = totalCountArr.length - 1; i >= 0; i--){
           let num = 0;
-          num = totalCountArrDummy[i];
-          totalCountArrDummyReverse[totalCountArrDummy.length - 1 - i] = num;
+          num = totalCountArr[i];
+          totalCountReverse[totalCountArr.length - 1 - i] = num;
         }
 
 
@@ -68,24 +72,33 @@ const promise = new Promise((resolve) => {
 
 
         const touchCount = document.getElementById('touchCount');
+
         let touchCountSum = 0;
-        console.log('test');
         for(let i = 0; i<totalCountArr.length; i++){
             touchCountSum = touchCountSum  + totalCountArr[i];
         }
+
         touchCount.innerHTML = touchCountSum;
-        console.log();
+        // console.log();
 
-
+        //メダル処理
+        const medal = document.getElementById('medal');
+        if(touchCountSum >= 20000){
+            medal.src = "../images/medal_ribbon_gold_illust_528.png";
+        } else if(touchCountSum >= 8000){
+            medal.src = "../images/medal_ribbon_silver_illust_529.png";
+        } else {
+            medal.src = "../images/medal_ribbon_bronze_illust_530.png";
+        }
         
           const data = {
-            labels: labels,
+            labels: totalDayArrReverse,
             datasets: [
               
               {
                 label: 'あなたの頑張り',
                 // data: totalCountReverse,
-                data: totalCountArrDummyReverse,
+                data: totalCountReverse,
                 borderColor: 'rgba(28,185,55,0.8)',
                 backgroundColor: 'rgba(53,236,84,0.37)',
                 fill: 'start',

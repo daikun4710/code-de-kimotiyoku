@@ -11,6 +11,7 @@ const promise = new Promise((resolve) => {
 
         //現在の曜日を取得
         let d = new Date();
+        let month = d.getMonth();
         let day = d.getDate();  //日
         let dayofweek = d.getDay(); //曜日
         let changeDay = d.toLocaleDateString();
@@ -31,11 +32,63 @@ const promise = new Promise((resolve) => {
             ['skirt4.png','skirt3.png','skirt2.png','skirt1.png']//スカート
         ];
 
+        //【仮】試験的に、書いた回数、左が最新
+    let totalCountArr = jsonsData.totalCountArr;
+    //ダミーデータ
+    // let totalCountArr = [800,500,250,500,300,100,700,600,200,100,400,500,900,1000,300,500,600,100,300,500,300,700,800,200,400,500,200,600,400,500,200,250,500,300,100,700,600,200,100,400,100,250];
+
+        //【仮】選択した色の二次元配列の番号を入れる。緑=0、赤=1、青=2、初期値=0
+        let selectColorNum = 0;
+        //【仮】対象のdiv要素を示す変数
+        let kariokiba;
+        let kariCoffee;
+        let i = 0;
+
         //色が変わる量
         let level1 = 1;
         let level2 = 250;
         let level3 = 600;
         let level4 = 1000;
+
+        //levelClass
+        class LevelClass {
+            constructor(level1,level2,level3,level4) {
+                this.level1 = level1;
+                this.level2 = level2;
+                this.level3 = level3;
+                this.level4 = level4;
+            }
+            getLevel1() {
+                return this.level1;
+            }
+            getLevel2() {
+                return this.level2;
+            }
+            getLevel3() {
+                return this.level3;
+            }
+            getLevel4() {
+                return this.level4;
+            }
+        }
+
+        //難易度ごとのlevelを格納
+        let levelArr = [
+            new LevelClass(1,250,600,1000),
+            new LevelClass(250,600,1000,2000),
+            new LevelClass(600,1000,2000,5000),
+            new LevelClass(1000,2000,5000,10000)
+        ];
+
+        //levelと見た目を更新する
+        document.getElementById('levels').onchange = function(){
+            let nowLevels = levelArr[this.value];
+            level1 = nowLevels.getLevel1();
+            level2 = nowLevels.getLevel2();
+            level3 = nowLevels.getLevel3();
+            level4 = nowLevels.getLevel4();
+            colorClick(selectColorNum);
+        }
 
     //レイアウトの作成(col)
     for (let i = 0; i < row; i++) {
@@ -74,8 +127,20 @@ const promise = new Promise((resolve) => {
     //現在の日にちから現在の週の日曜日までの日付を出力
     for(let m = dayofweek; m >= 0; m--){
         contentDay = document.getElementById(m);
-        contentDay.innerHTML = dayStr;
         contentDay.style.background = '#022D10';
+        let contentDayText = document.createElement('p');
+        contentDayText.innerHTML = dayStr;
+        contentDay.appendChild(contentDayText);
+
+        // hover表示のための要素の作成
+        contentHoverElemet = document.createElement('div');
+        contentHoverElemetText = document.createElement('p');
+        // 要素の数だけ出力
+        contentHoverElemetText.innerHTML = dayStr + "<br>" + totalCountArr[m] + "コード";
+        contentHoverElemet.classList.add("hovercss");
+        contentHoverElemet.appendChild(contentHoverElemetText);
+        contentDay.appendChild(contentHoverElemet);
+
         day = d.setDate(d.getDate() - 1);
         dayStr = d.toLocaleDateString().substring(5);
     }
@@ -86,6 +151,22 @@ const promise = new Promise((resolve) => {
             contentDay = document.getElementById(k * 10 + l);
             contentDay.innerHTML = dayStr;
             contentDay.style.backgroundColor = '#dcdcdc';
+            
+            // jsonファイルの値取得のための変数
+            innner = ((k - 1) * 7 + (col - 6) + (-1 * l) + col - 1 + dayofweek);
+            console.log(innner);
+
+            // hover表示のための要素の作成
+            contentHoverElemet = document.createElement('div');
+            contentHoverElemetText = document.createElement('p');
+            // 要素の数だけ出力
+            dayStr = d.toLocaleDateString().substring(5);
+            contentHoverElemetText.innerHTML = dayStr + "<br>" + totalCountArr[innner] + "コード";
+            // クラスの付与
+            contentHoverElemet.classList.add("hovercss");
+            contentHoverElemet.appendChild(contentHoverElemetText);
+            contentDay.appendChild(contentHoverElemet);
+
             day = d.setDate(d.getDate() - 1);
             dayStr = d.toLocaleDateString().substring(5);
         }
@@ -95,28 +176,30 @@ const promise = new Promise((resolve) => {
 
 
     
-    //【仮】試験的に、書いた回数、左が最新
-    let totalCountArr = jsonsData.totalCountArr;
-    //ダミーデータ
-    //let totalCountArr = [1000,200,250,500,300,0,700,600,20,100,400,500,900,1000,300,500,600,100,30,500,300,700,800,20,400,500,200,600,400,5];
+    
 
 
     const touchCount = document.getElementById('touchCount');
     let touchCountSum = 0;
-    console.log('test');
+    // console.log('test');
     for(let i = 0; i<totalCountArr.length; i++){
         touchCountSum = touchCountSum  + totalCountArr[i];
     }
     touchCount.innerHTML = touchCountSum;
-    // console.log();
+    
+    //　仮
+    // touchCountSum = 0;
 
-
-    //【仮】選択した色の二次元配列の番号を入れる。緑=0、赤=1、青=2、初期値=0
-    let selectColorNum = 0;
-    //【仮】対象のdiv要素を示す変数
-    let kariokiba;
-    let kariCoffee;
-    let i = 0;
+    //メダル処理
+    const medal = document.getElementById('medal');
+    if(touchCountSum >= 20000){
+        medal.src = "../images/medal_ribbon_gold_illust_528.png";
+    } else if(touchCountSum >= 8000){
+        medal.src = "../images/medal_ribbon_silver_illust_529.png";
+    } else {
+        medal.src = "../images/medal_ribbon_bronze_illust_530.png";
+    }
+    
     
 
     //初回起動時の色の振り分け
@@ -159,7 +242,24 @@ const promise = new Promise((resolve) => {
     }
 
     document.getElementById('color').onchange = function(){
+        let colorSet = document.getElementById('color');
+        selectColorNum = this.value;
+        console.log(selectColorNum);
         colorClick(this.value);
+        switch (selectColorNum) {
+            case '0':
+                colorSet.style.color = 'green';
+                break;
+            case '1':
+                colorSet.style.color = 'red';
+                break;
+            case '2':
+                colorSet.style.color = 'blue';
+                break;
+            default:
+                colorSet.style.color = 'black';
+                break;
+        }
     }
     //二回目から------------------------------------------------------------------
     function colorClick(selectColorNum){

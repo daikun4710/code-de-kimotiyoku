@@ -44,6 +44,8 @@ function activate(context) {
     let data = fs.readFileSync(absolutePath + "/out/file2.json", "utf-8");
     let datajs = JSON.parse(data);
 
+
+    
     //初めて拡張機能を開いたとき(OK)
     if(datajs.beforeDayStr1 == ""){
         
@@ -142,16 +144,75 @@ function activate(context) {
         button.text = "$(flame)" + "処理中です" + "$(flame)";
     }
 
+    const go = () => {
+        if(absolutePath.charAt(0) == "/") {
+            vscode.env.openExternal(vscode.Uri.parse("file://" + absolutePath + "/out/index.html",true));
+        } else{
+            vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
+        }
+        // vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
+        updateLabel();
+    }
+
+    const openTerminal = () => {
+        let term = vscode.window.createTerminal('Dawn');
+        term.show();
+        term.sendText(`cd `+ absolutePath);
+        term.sendText(`npx webpack`);
+        updateLabelAction();
+        term.sendText(` `);
+        return true;
+    }
+
+    // const asyncFunc = async () => {
+    //     openTerminal();
+    //     // await term.sendText(` `);
+
+    //     await go();
+    // }
+
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-omikuji.helloWorld', () => {
+
+            // Promise.resolve()
+            // .then(function(){
+            // return new Promise(function (resolve, reject) {
+            //     let term = vscode.window.createTerminal('Dawn');
+            // });
+            // })
+            // .then(function(){
+            //     return new Promise(function (resolve, reject) {
+            //         let term = vscode.window.createTerminal('Dawn');
+            //     });
+            //     })
+
+            // const promise = new Promise((resolve) => {
+            //     //先の処理
+            //     openTerminal();
+            //     resolve("終わり");
+            // }).then((val) => {
+            //     go();
+            // });
+
+            // asyncFunc();
+
+
             let term = vscode.window.createTerminal('Dawn');
             term.show();
+            // vscode.window.showInformationMessage(term.TerminalState + "before");
             term.sendText(`cd `+ absolutePath);
             term.sendText(`npx webpack`);
+            //テスト
+            // vscode.window.activeTerminal?.sendText(
+            //     "まだ"
+            // );
+            // vscode.window.showInformationMessage(term.TerminalState + "after");
+
+            // vscode.window.showInformationMessage(term.selectedTab.busy() + "after");
+
             updateLabelAction();
             setTimeout(() => {
-                vscode.env.openExternal(vscode.Uri.parse("file:///" + absolutePath + "/out/index.html",true));
-                updateLabel();
+                go();
             }, 4000);
         })
     );

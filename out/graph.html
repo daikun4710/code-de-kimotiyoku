@@ -14,6 +14,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta
@@ -46,20 +49,22 @@
         <div class="collapse navbar-collapse" id="navbarsExample04">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./index.html">草</a>
+              <a class="nav-link" aria-current="page" href="./index.html">カレンダー</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./graph.html">グラフ</a>
             </li>
           </ul>
           <!-- //検索タブの表示 -->
-          <h2><span><i class="far fa-hand-point-right bi bi-award"></i>現在の変更コード量</span></h2>
+          <h2><span>
+            <img id="medal" src="../images/medal_ribbon_gold_illust_528.png" style="height: 35px;margin-left: 10px;margin-right: 15px;">
+             現在の変更コード量</span></h2>
           <span
            style="color: white; font-size: calc(1rem + .9vw);" id="touchCount"></span>
         </div>
       </div>
     </nav>
-    <h1 class="text-center mt-3 mb-2">コードで気持ちよく</h1>
+    <h1 id="code-title" class="text-center mt-3 mb-2">コードで気持ちよく</h1>
     <p class="text-center">
       <i class="bi bi-person-fill"></i>1000000人が利用見込み
     </p>
@@ -98,7 +103,7 @@
 
     <!-- アコーディオン -->
     <section id="accordion">
-      <h2>よくある質問</h2>
+      <h2 style="padding-left: 0;">よくある質問</h2>
       <ul>
         <li>
           <dl>
@@ -154,7 +159,7 @@
         <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
       </div>
 
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <!-- <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
         <li class="ms-3">
           <a class="text-muted" href="#"
             ><svg class="bi" width="24" height="24">
@@ -169,7 +174,7 @@
             ><i class="bi bi-instagram"></i>
           ></a>
         </li>
-      </ul>
+      </ul> -->
     </footer>
 
     <!-- アコーディオンjQueary -->

@@ -1,4 +1,18 @@
 /* アコーディオン */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#code-title{
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+#levelText {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  font-weight: 800;
+}
 #accordion{
   width: 100%;
   background-color: #F7F7F7;
@@ -228,3 +242,19 @@ h2 span:after {
   border-style: solid;
   border-color: transparent transparent transparent #0075a9;
 }
+
+.hovercss {
+  display: none;
+}
+
+.contentCol:hover .hovercss {
+  display: block;
+  position: relative;
+  top: -50px;
+  color: white;
+  background: black;
+  text-align: center;
+  border-radius: 5px;
+  height: 60px;
+  line-height: 30px;
+} 
