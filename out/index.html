@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>extendGit</title>
+  </head>
+
+  <body class="container-fluid" id="body">
+    <nav
+      class="navbar navbar-expand-md navbar-dark bg-dark"
+      aria-label="Fourth navbar example"
+    >
+      <div class="container-fluid">
+        <img src="../images/teckBuzz-logo.svg" style="width: 200px" />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExample04"
+          aria-controls="navbarsExample04"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="./index.html">カレンダー</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./graph.html">グラフ</a>
+            </li>
+          </ul>
+          <!-- //検索タブの表示 -->
+          <h2><span>
+            <!-- <i class="far fa-hand-point-right bi bi-award"></i> -->
+
+            <img id="medal" src="../images/medal_ribbon_gold_illust_528.png" style="height: 30px;margin-left: 10px;margin-right: 15px;">
+            現在の変更コード量</span></h2>
+          <span
+           style="color: white; font-size: calc(1rem + .9vw);" id="touchCount"></span>
+        </div>
+      </div>
+    </nav>
+    <h1 id="code-title" class="text-center mt-3 mb-2">コードで気持ちよく</h1>
+    <p class="text-center">
+      <i class="bi bi-person-fill"></i>1000000人が利用見込み
+    </p>
+
+    <div style="display: flex;">
+      <div id="levelText" style="margin-left: 9%; margin-right: 10%; color:#b9d08b;">Color</div>
+      <div id="levelText" style="margin-left: 54.5%; margin-right: 50%; color:#b9d08b;">Level</div>
+    </div>
+    
+    <div style="display: flex;">
+
+      <!-- 見た目設定 -->
+      <div style="text-align: left; margin-left: 9%; padding-right: 27%">
+        <!-- <span class="custom-dropdown big"> -->
+          <select id="color" style="height: 50px; width:120px; color: green; font-weight:500;" onchange="getValue(this)" style="appearance: none"  class="form-select" aria-label="Default select example">
+            <option value="0" style="font-weight: 500;" class="text-success" selected>緑</option>
+            <option value="1" style="font-weight: 500;" class="text-danger">赤</option>
+            <option value="2" style="font-weight: 500;" class="text-primary">青</option>
+            <option value="3" style="font-weight: 500; color: black;"><img src="../images/coffee4.png" />coffee</option>
+            <option value="4" style="font-weight: 500; color: black;">スカート</option>
+            <option value="5" style="font-weight: 500; color: black;">パンツ</option>
+          </select>
+        <!-- </span> -->
+      </div>
+
+      <!-- level設定 -->
+      <div style="text-align: right; margin-left: 32%; padding-right: 10%;">
+        <!-- <span class="custom-dropdown big"> -->
+          <select class="form-select" aria-label="Default select example" id="levels" onchange="getValue(this)" style="height: 50px; width:120px; font-weight: 500;">
+            <option value="0" style="font-weight: 500;" class="levelSet1" selected>ひよこ</option>
+            <option value="1" style="font-weight: 500;" class="levelSet2">ねこ</option>
+            <option value="2" style="font-weight: 500;" class="levelSet3">トラ</option>
+            <option value="3" style="font-weight: 500;" class="levelSet4">神</option>
+          </select>
+        <!-- </span> -->
+      </div>
+
+    </div>
+
+
+    <!-- <button onclick="windowOpen()">開く</button> -->
+    <div id="jsons"></div>
+
+     <div style="display: flex; margin: 3% 0% 0 5%;">
+      <div id="content" style="margin-right: 10%;margin-left: 5%;  font-size: 1px;" class="text-white style=" width: 200px;>
+      </div>
+      <div style="width: 20%;">
+       <img class="mb-4" src="../images/hack-banner.png" style="width:100%;">
+       <img class="mb-4" src="../images/hack-banner4.png" style="width:100%;">
+       <img class="mb-4" src="../images/hack-banner2.png" style="width:100%;">
+       <img  src="../images/hack-banner3.png" style="width:100%">
+      </div>
+    </div>
+
+    <!-- アコーディオン -->
+    <section id="accordion">
+      <h2 style="padding-left: 0;">よくある質問</h2>
+      <ul>
+        <li>
+          <dl>
+            <dt class="accordion_q">
+              コードで気持ちよくってどんな意味ですか？
+            </dt>
+            <dd class="accordion_a">
+              日々の学習・仕事などで記述したコードを可視化させることで、自己肯定感を爆上げしようって意味です。
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt class="accordion_q">Githubの草と同じではないですか？？</dt>
+            <dd class="accordion_a">
+              デザイン的には似ていますが異なります。相違点は3つ。Github上でアクションを起こさずともボタン一つで可視化できる。ネット環境が必要ない。可視化させるものを変更させることができる。
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt class="accordion_q">使用言語は何ですか？</dt>
+            <dd class="accordion_a">
+              HTML5 , CSS3 ,Bootstrap , JavaScript , nodeJS , VS Code API , JSON
+              , jQuery
+            </dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt class="accordion_q">今後の展望はありますか？</dt>
+            <dd class="accordion_a">
+              TwitterAPIを用いて自分の結果を共有できるようにする。表示する期間や表示内容をカスタムできるようにする。拡張機能を入れた人達でランキング機能を搭載する。
+            </dd>
+          </dl>
+        </li>
+      </ul>
+    </section>
+
+    <!-- footer -->
+    <footer
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+    >
+      <div class="col-md-4 d-flex align-items-center">
+        <a
+          href="/"
+          class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
+        >
+          <svg class="bi" width="30" height="24">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+        <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+      </div>
+
+    </footer>
+
+    <!-- アコーディオンjQueary -->
+    <script>
+      $(function () {
+        $(".accordion_q").click(function () {
+          $(this).next().slideToggle(200); //要素の開閉
+          $(this).toggleClass("arrow"); //矢印を回転させる
+        });
+      });
+    </script>
+    <script src="../dist/index.bundle.js"></script>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js "
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
+      crossorigin="anonymous "
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js "
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
+      crossorigin="anonymous "
+    ></script>
+  </body>
+</html>
